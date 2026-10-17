@@ -96,6 +96,15 @@ $('#change-form').addEventListener('click',()=>{
   $('#change-form').innerHTML=suited?'切回纯情二次元形态 <span>↻</span>':'切换男团西装形态 <span>↻</span>';
   $('#crown').disabled=suited;$('#glasses').disabled=suited;
 });
+// Position accessories in the photo's contain rectangle, excluding the card and letterbox.
+const portrait=$('.flip-face.front img'),accessories=$('.portrait-overlays');
+const alignAccessories=()=>{
+  if(!portrait.naturalWidth||!portrait.clientWidth)return;
+  const scale=Math.min(portrait.clientWidth/portrait.naturalWidth,portrait.clientHeight/portrait.naturalHeight);
+  const width=portrait.naturalWidth*scale,height=portrait.naturalHeight*scale;
+  Object.assign(accessories.style,{width:`${width}px`,height:`${height}px`,left:`${portrait.offsetLeft+(portrait.clientWidth-width)*.5}px`,top:`${portrait.offsetTop+(portrait.clientHeight-height)*.4}px`});
+};
+portrait.addEventListener('load',alignAccessories);new ResizeObserver(alignAccessories).observe(portrait);alignAccessories();
 for(const [button,selector,on,off] of [['#crown','.hero-crown','♛ 摘皇冠','♛ 戴皇冠'],['#glasses','.hero-glasses','▰ 摘墨镜','▰ 戴墨镜']]){
   $(button).addEventListener('click',()=>{
     playSound('tap');
