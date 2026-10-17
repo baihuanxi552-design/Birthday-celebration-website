@@ -34,7 +34,9 @@ export class SoundEffects{
     if(!this.master){
       this.master=ctx.createGain();this.master.gain.value=.65;
       const limiter=ctx.createDynamicsCompressor();limiter.threshold.value=-14;limiter.ratio.value=6;
-      this.master.connect(limiter);limiter.connect(ctx.destination);
+      // Double the rendered effect level after the existing compressor.
+      const boost=ctx.createGain();boost.gain.value=2;
+      this.master.connect(limiter);limiter.connect(boost);boost.connect(ctx.destination);
       const buffer=ctx.createBuffer(1,Math.ceil(ctx.sampleRate*1.5),ctx.sampleRate),data=buffer.getChannelData(0);
       let seed=510;for(let i=0;i<data.length;i++){seed=(Math.imul(seed,1664525)+1013904223)>>>0;data[i]=seed/2147483648-1;}
       this.noise=buffer;

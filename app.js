@@ -1,6 +1,6 @@
 import {assetNames,clamp,comicState,lensGeometry} from './logic.js';
 import {halftonePath,stampKeyframes,glyphKeyframes} from './motion.js';
-import {SoundEffects} from './sound.js';
+import {SoundEffects} from './sound.js?v=20261018-8';
 import {giftLoading} from './loading.js?v=20261018-7';
 import {revealPlayback} from './reveal.js?v=20261018-6';
 
@@ -233,19 +233,77 @@ $('#glitch').addEventListener('click',()=>{
 
 const speechNames={1:'很久以前',2:'深情演说',3:'Windows 未激活',16:'火锅大仙',17:'奖牌在手'};
 const quotes={
-  1:['很久以前，510还以为这些照片不会被发现。','大屏写着“很久以前”，510的传说就从这里开场。'],
-  2:['麦克风给我，主打一个闭眼输出。','眼睛一闭，麦克风一拿，情绪价值直接拉满。'],
-  3:['Windows 未激活，但我的抽象已激活！','兄弟已经同框，Windows 还在等激活。'],
-  16:['别人吃火锅，我在渡劫。','锅里冒的是热气，510脸上飘的是仙气。'],
-  17:['奖牌在手，得意的小表情藏都藏不住。','请看清楚：510今天可是有奖牌的人！']
+  1:[
+    '很久以前，510还以为这些照片不会被发现。',
+    '大屏写着“很久以前”，510的传说就从这里开场。',
+    '别人上台讲故事，510上台给兄弟们留素材。',
+    '道德讲堂很庄严，寿星笑得很自然。',
+    '故事才刚开头，兄弟已经按下快门。',
+    '台上这位同学，请交代你的寿星身份。',
+    '这一笑，直接入选生日博物馆开篇。',
+    '大屏负责铺垫，510负责闪亮登场。',
+    '摄影师：你继续讲，我继续存。',
+    '很久以前是开头，黑历史归档是结局。'
+  ],
+  2:[
+    '麦克风给我，主打一个闭眼输出。',
+    '眼睛一闭，麦克风一拿，情绪价值直接拉满。',
+    '一手拿麦，一手抱胸，仪式感必须到位。',
+    '黄黑麦克风在手，今天这个舞台归我。',
+    '看这陶醉的表情，已经进入自己的演唱会。',
+    '观众还在台下，510已经沉浸在聚光灯里。',
+    '这不是普通发言，这是寿星限定深情版。',
+    '先别叫醒他，让他把这个情绪走完。',
+    '眼神暂时下班，麦克风继续营业。',
+    '摄影师抓到了：闭眼都挡不住的投入。'
+  ],
+  3:[
+    'Windows 未激活，但我的抽象已激活！',
+    '兄弟已经同框，Windows 还在等激活。',
+    '台上的笑容正常运行，右下角的系统还没转正。',
+    '这张合照，有兄弟，有麦克风，还有系统提醒。',
+    '舞台是我们的，右下角是 Windows 的。',
+    '人到齐了，麦到位了，就差一个激活码。',
+    '先把这张合照拍好，激活的事下次再说。',
+    '生日快乐可以大声说，激活提示也得一起入镜。',
+    '以为只是兄弟同框，放大才发现隐藏彩蛋。',
+    '510负责台上发挥，Windows负责角落抢镜。'
+  ],
+  16:[
+    '别人吃火锅，我在渡劫。',
+    '锅里冒的是热气，510脸上飘的是仙气。',
+    '这一桌吃的是火锅，这一位拍出的是仙侠。',
+    '人还坐在饭桌前，脸已经进入云端。',
+    '汤底开了，寿星的仙气也到位了。',
+    '摄影师刚按快门，火锅先给510加了特效。',
+    '天然蒸汽滤镜，一锅就能安排。',
+    '没有修图，全靠锅里的热气配合。',
+    '兄弟们在涮菜，510在吞云吐雾。',
+    '这顿饭的隐藏菜单：火锅大仙限定皮肤。'
+  ],
+  17:[
+    '奖牌在手，得意的小表情藏都藏不住。',
+    '请看清楚：510今天可是有奖牌的人！',
+    '奖牌拿好了，笑容也已经准备好了。',
+    '坐在看台上，也挡不住这份小骄傲。',
+    '来，镜头靠近一点，奖牌必须拍清楚。',
+    '嘴角说低调，手里的奖牌可不同意。',
+    '这一刻，寿星和他的奖牌都很上镜。',
+    '别人看比赛，兄弟们看510展示战利品。',
+    '这个表情翻译一下：看见我的奖牌了吗？',
+    '生日博物馆认证：有牌面的男人。'
+  ]
 };
 const addQuote=()=>{
   playSound('quote');
-  const box=$('#quotes');if(box.children.length>=4)box.firstElementChild.remove();
-  const lines=quotes[currentSpeech];
-  const quote=document.createElement('div');quote.className='quote';quote.textContent=lines[quoteIndex%lines.length];quote.style.top=`${23+(quoteIndex%3)*20}%`;quoteIndex++;box.append(quote);
-  quote.addEventListener('animationend',()=>quote.remove());
-  if(reduced.matches)setTimeout(()=>quote.remove(),4000);
+  const box=$('#quotes'),lines=quotes[currentSpeech];
+  for(let i=0;i<2;i++){
+    if(box.children.length>=3)box.firstElementChild.remove();
+    const quote=document.createElement('div');quote.className='quote';quote.textContent=lines[quoteIndex%lines.length];
+    quote.style.top=`${18+(quoteIndex%3)*27}%`;quote.style.animationDelay=`${i*.65}s`;quoteIndex++;box.append(quote);
+    quote.addEventListener('animationend',()=>quote.remove());
+    if(reduced.matches){quote.style.animation='none';setTimeout(()=>quote.remove(),6000);}
+  }
 };
 document.querySelectorAll('[data-speech]').forEach(button=>button.addEventListener('click',()=>{
   currentSpeech=Number(button.dataset.speech);quoteIndex=0;$('#quotes').replaceChildren();

@@ -47,5 +47,11 @@
     "bytes": 43958840,
     "fullDecodePassed": true,
     "deterministicStillPassed": true
-  }
+  },
+  "sfxGainMultiplier": 2,
+  "audioNativeChecks": "15 effects at 2x RMS, highest peak 0.446, mute zero",
+  "photoComments": 50,
+  "commentsPerPhoto": 10,
+  "visibleCommentLimit": 3,
+  "browserCommentChecksPassed": true
 }

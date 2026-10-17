@@ -111,3 +111,7 @@ html{overflow-x:clip;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .portrait-overlays{position:absolute;pointer-events:none}
 .portrait-overlays .hero-crown{left:50.6%;top:18%;width:17%;height:auto;transform:translate(-50%,-100%);fill:var(--yellow);stroke:var(--ink);stroke-width:4;stroke-linejoin:round;filter:drop-shadow(1px 2px 0 var(--ink))}
 .portrait-overlays .hero-glasses{left:50.6%;top:24.1%;width:15%;height:auto;transform:translateX(-50%) rotate(2deg)}
+/* Photo-specific comments travel through three lanes, with time to read on phones. */
+.quote{animation:photo-danmaku 7s cubic-bezier(.2,.6,.4,1) both;font-size:15px;line-height:1.6;overflow-wrap:anywhere}
+@keyframes photo-danmaku{0%{transform:translateX(110%);opacity:0}14%{transform:translateX(0);opacity:1}78%{transform:translateX(-8%);opacity:1}100%{transform:translateX(-125%);opacity:0}}
+@media(max-width:700px){.quote{font-size:14px;padding:8px 10px}}
