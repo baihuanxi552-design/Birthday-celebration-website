@@ -1,0 +1,194 @@
+{
+  "browser": {
+    "battery": "精神电量 0%",
+    "blessingOpen": true,
+    "blessingText": "510，生日快乐！",
+    "brokenImages": [],
+    "candlesBlown": true,
+    "comicProgress": "100",
+    "crown": "true",
+    "currentViewport": {
+      "height": 642,
+      "width": 359
+    },
+    "entryCompleted": true,
+    "film": {
+      "currentTime": 35.008,
+      "duration": 35.008,
+      "error": null,
+      "readyState": 4
+    },
+    "glasses": "true",
+    "glitchStatus": "哈哈哈哈哈！笑容已溢出，清晰度抢救失败。",
+    "headUpright": true,
+    "policeStatus": "抽象警报！510，你已被兄弟们的镜头包围！",
+    "sleepUnsealed": true,
+    "speechExhibit": "EXHIBIT 16 / 火锅大仙",
+    "suitFlip": true,
+    "viewportsChecked": [
+      {
+        "height": 720,
+        "width": 1280
+      },
+      {
+        "height": 642,
+        "width": 359
+      }
+    ],
+    "zoomBackground": "2248px 3329.56px",
+    "zoomLocked": "true"
+  },
+  "http": {
+    "resources": [
+      {
+        "path": "/",
+        "status": 200,
+        "bytes": 17794
+      },
+      {
+        "path": "/app.js",
+        "status": 200,
+        "bytes": 13279
+      },
+      {
+        "path": "/styles.css",
+        "status": 200,
+        "bytes": 26841
+      },
+      {
+        "path": "/assets/01_intro.jpg",
+        "status": 200,
+        "bytes": 374875
+      },
+      {
+        "path": "/assets/02_mic.jpg",
+        "status": 200,
+        "bytes": 186027
+      },
+      {
+        "path": "/assets/03_win.jpg",
+        "status": 200,
+        "bytes": 388307
+      },
+      {
+        "path": "/assets/04_warn.jpg",
+        "status": 200,
+        "bytes": 47670
+      },
+      {
+        "path": "/assets/05_glove.jpg",
+        "status": 200,
+        "bytes": 49766
+      },
+      {
+        "path": "/assets/06_cube.jpg",
+        "status": 200,
+        "bytes": 38255
+      },
+      {
+        "path": "/assets/07_blur.jpg",
+        "status": 200,
+        "bytes": 114390
+      },
+      {
+        "path": "/assets/08_bed.jpg",
+        "status": 200,
+        "bytes": 31033
+      },
+      {
+        "path": "/assets/09_stand.jpg",
+        "status": 200,
+        "bytes": 170522
+      },
+      {
+        "path": "/assets/10_bros.png",
+        "status": 200,
+        "bytes": 1300138
+      },
+      {
+        "path": "/assets/11_mask_dance.mp4",
+        "status": 200,
+        "bytes": 27335807
+      },
+      {
+        "path": "/assets/12_sleep_face.jpg",
+        "status": 200,
+        "bytes": 466853
+      },
+      {
+        "path": "/assets/13_daze.jpg",
+        "status": 200,
+        "bytes": 1936511
+      },
+      {
+        "path": "/assets/14_neck_tilt.jpg",
+        "status": 200,
+        "bytes": 3515384
+      },
+      {
+        "path": "/assets/15_umbrella_peek.jpg",
+        "status": 200,
+        "bytes": 3710718
+      },
+      {
+        "path": "/assets/16_hotpot.jpg",
+        "status": 200,
+        "bytes": 6378322
+      },
+      {
+        "path": "/assets/17_medal.jpg",
+        "status": 200,
+        "bytes": 113705
+      },
+      {
+        "path": "/assets/18_class_laugh.jpg",
+        "status": 200,
+        "bytes": 22909513
+      },
+      {
+        "path": "/assets/19_suits_five.jpg",
+        "status": 200,
+        "bytes": 2766485
+      },
+      {
+        "path": "/assets/20_polaroid.jpg",
+        "status": 200,
+        "bytes": 4810250
+      }
+    ],
+    "videoRange": {
+      "status": 206,
+      "bytes": 1024,
+      "contentRange": "bytes 0-1023/48047281"
+    },
+    "invalidRange": 416
+  },
+  "automatedChecks": {
+    "passed": 12,
+    "failed": 0
+  },
+  "media": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "30/1",
+        "nb_frames": "1050",
+        "side_data_list": [
+          {}
+        ]
+      },
+      {
+        "codec_type": "audio",
+        "avg_frame_rate": "0/0",
+        "nb_frames": "1643"
+      }
+    ],
+    "format": {
+      "duration": "35.008000"
+    }
+  }
+}
