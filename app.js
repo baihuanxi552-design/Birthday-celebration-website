@@ -1,13 +1,14 @@
-import {assetNames,clamp,comicState,lensGeometry,LOOP_END} from './logic.js';
+import {assetNames,clamp,comicState,lensGeometry} from './logic.js';
 import {halftonePath,stampKeyframes,glyphKeyframes} from './motion.js';
 import {SoundEffects} from './sound.js';
-import {giftLoading} from './loading.js';
+import {giftLoading} from './loading.js?v=20261018-6';
+import {revealPlayback} from './reveal.js?v=20261018-6';
 
 const $=selector=>document.querySelector(selector);
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
 let resolveMedia=url=>url;
 const asset=id=>resolveMedia(`assets/${assetNames[id]}`);
-const intro=$('#intro'),introVideo=$('#intro-video'),reveal=$('#reveal'),museum=$('#museum');
+const intro=$('#intro'),introVideo=$('#intro-video'),revealVideo=$('#reveal-video'),reveal=$('#reveal'),museum=$('#museum');
 let phase='masked',muted=false,unsealed=false,suited=false,locked=false,quoteIndex=0,powerPhase=0,currentSpeech=1;
 const sfx=new SoundEffects();
 const playSound=name=>sfx.play(name).catch(()=>{$('#sound-status').textContent='音效暂未开启，请点声音开关重试。';});
@@ -15,58 +16,85 @@ const syncSoundUI=()=>document.querySelectorAll('[data-sound-toggle]').forEach(b
   button.textContent=muted?'声音：关':'声音：开';button.setAttribute('aria-pressed',String(!muted));
 });
 const setMuted=value=>{
-  muted=value;sfx.setEnabled(!muted);introVideo.muted=muted;$('#birthday-film').muted=muted;syncSoundUI();
+  muted=value;sfx.setEnabled(!muted);introVideo.muted=muted;revealVideo.muted=muted;$('#birthday-film').muted=muted;syncSoundUI();
 };
 syncSoundUI();
 document.querySelectorAll('[data-sound-toggle]').forEach(button=>button.addEventListener('click',()=>{
   setMuted(!muted);if(!muted)playSound('tap');
-  if(intro.open)introVideo.play().catch(()=>{$('#intro-status').textContent='请再点一次声音按钮开启视频声音。';});
+  if(intro.open&&(phase==='masked'||phase==='revealing'))(phase==='revealing'?revealVideo:introVideo).play().catch(()=>{$('#intro-status').textContent='请再点一次声音按钮开启视频声音。';});
 }));
 $('#power').addEventListener('pointerdown',()=>{if(!muted)sfx.unlock().catch(()=>{});});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)sfx.stopAll();});
 const labels={1:'很久以前，大师登场',2:'麦克风到手，世界我有',3:'系统未激活，抽象已激活',4:'禁止倒卖游戏币，510在旁边笑',5:'专业装备：黑手套',6:'魔方在手，笑容我有',7:'笑到画质崩坏',8:'宿舍上铺认真看书',9:'纯情二次元乖宝宝',10:'搭肩欢笑的兄弟们',12:'镇馆之宝：510的死亡睡颜',13:'思考人生',14:'当场断电',15:'保安和蓝伞之间的野生510',16:'火锅大仙吞云吐雾',17:'510和他的奖牌',18:'一回头，兄弟都在',19:'五兄弟西装合照，510在最右',20:'这一刻我们彼此相爱'};
 
 $('.halftone path').setAttribute('d',halftonePath());
+$('.entry-dots path').setAttribute('d',halftonePath());
 intro.addEventListener('cancel',event=>event.preventDefault());
-resolveMedia=giftLoading(()=>{
-  intro.showModal();introVideo.play().catch(()=>{$('#intro-status').textContent='点下按钮，即可开始播放并解锁510。';});
+const hud=$('#reveal-hud'),revealStatus=$('#reveal-status'),continueReveal=$('#continue-reveal');
+const curtain=$('#entry-curtain');
+const playback=revealPlayback(revealVideo,{
+  onPlaying:()=>{
+    intro.classList.add('reveal-playing');intro.classList.remove('playback-blocked');introVideo.pause();continueReveal.hidden=true;
+    revealStatus.textContent='头套拆卸中，真容马上揭晓……';
+  },
+  onProgress:value=>{
+    $('#reveal-progress').value=Math.round(value*100);
+    if(value>.48){
+      $('.live-tag').textContent='● 真容已揭晓 / 今日寿星 510';
+      if(!intro.classList.contains('playback-blocked'))revealStatus.textContent='就是他！今日大寿星：510！';
+    }
+  },
+  onBlocked:reason=>{
+    intro.classList.add('playback-blocked');
+    continueReveal.hidden=false;
+    revealStatus.textContent=reason==='error'?'视频播放遇到问题，可以直接入馆。':'播放暂时停住了，点继续播放，或直接入馆。';
+  },
+  onFinish:()=>enterMuseum()
 });
+async function enterMuseum(){
+  if(phase==='entering'||phase==='entered')return;
+  phase='entering';playback.stop();introVideo.pause();revealVideo.pause();hud.hidden=true;
+  curtain.hidden=false;
+  if(!reduced.matches){
+    $('.entry-badge').animate(stampKeyframes(),{duration:520,fill:'both'});
+    await curtain.animate([{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)'}],{duration:320,easing:'cubic-bezier(.34,1.56,.64,1)',fill:'both'}).finished.catch(()=>{});
+  }
+  // Move the covered curtain out of the modal before closing it, in the same paint.
+  document.body.append(curtain);intro.close();museum.inert=false;
+  document.body.classList.remove('gate-active');
+  celebrate($('#celebration'));playSound('celebrate');
+  if(!reduced.matches){
+    $('.hero-copy').animate([{opacity:0,transform:'translateY(30px)'},{opacity:1,transform:'translateY(0)'}],{duration:600,easing:'cubic-bezier(.34,1.56,.64,1)'});
+    await curtain.animate([{clipPath:'inset(0 0 0 0)'},{clipPath:'inset(0 0 0 100%)'}],{delay:240,duration:420,easing:'cubic-bezier(.65,0,.35,1)',fill:'forwards'}).finished.catch(()=>{});
+  }
+  curtain.hidden=true;phase='entered';
+  const title=$('#hero-title');title.tabIndex=-1;title.focus({preventScroll:true});
+}
+resolveMedia=giftLoading(()=>{
+  intro.showModal();
+  if(!reduced.matches)intro.animate([{opacity:0},{opacity:1}],{duration:300});
+  introVideo.play().catch(()=>{$('#intro-status').textContent='点下按钮，即可开始播放并解锁510。';});
+},()=>playSound('unseal'));
 introVideo.addEventListener('error',()=>{
+  if(phase!=='masked')return;
   $('#intro-retry').hidden=false;
-  $('#intro-status').textContent='视频未能加载，请检查本地服务并点击重试。';
-  reveal.disabled=false;
+  $('#intro-status').textContent='开场视频暂未播放，可重试或直接点击揭面。';
 });
 $('#intro-retry').addEventListener('click',()=>{
   $('#intro-retry').hidden=true;introVideo.load();
   introVideo.play().catch(()=>{$('#intro-status').textContent='请点击揭面按钮开始播放。';});
 });
 reveal.addEventListener('click',()=>{
-  if(phase==='revealing')return;
-  phase='revealing';reveal.disabled=true;
-  playSound('reveal');
-  $('#intro-status').textContent='头套拆卸中，510即将隆重登场……';
-  const resumeAt=clamp(introVideo.currentTime||0,0,LOOP_END-.05);
-  introVideo.loop=false;
-  // A separately trimmed loop physically contains no unveiling frames. Only this click loads the full video.
-  introVideo.addEventListener('loadedmetadata',()=>{
-    introVideo.currentTime=Math.min(resumeAt,introVideo.duration-.1);
-    introVideo.muted=muted;
-    introVideo.play().catch(()=>{
-      introVideo.muted=true;
-      introVideo.play().catch(()=>{reveal.disabled=false;phase='masked';$('#intro-status').textContent='浏览器暂停了播放，请再点一次揭面按钮。';});
-    });
-  },{once:true});
-  introVideo.src=asset(11);introVideo.load();
-  intro.classList.add('revealing');
+  if(phase!=='masked')return;
+  phase='revealing';reveal.disabled=true;hud.hidden=false;
+  playSound('reveal');intro.classList.add('revealing');
+  revealVideo.muted=muted;playback.start();
 });
-introVideo.addEventListener('ended',()=>{
-  if(phase!=='revealing')return;
-  phase='entered';intro.close();introVideo.pause();
-  document.body.classList.remove('gate-active');museum.inert=false;
-  const title=$('#hero-title');title.tabIndex=-1;title.focus({preventScroll:true});
-  celebrate($('#celebration'));
-  playSound('celebrate');
+continueReveal.addEventListener('click',()=>{
+  revealStatus.textContent='正在恢复播放……';revealVideo.muted=muted;playback.resume();
 });
+$('#enter-museum').addEventListener('click',()=>enterMuseum());
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)playback.check();});
 
 const syncModalBody=()=>document.body.classList.toggle('modal-open',!!document.querySelector('dialog[open]:not(#intro)'));
 const openDialog=dialog=>{dialog.showModal();syncModalBody();};

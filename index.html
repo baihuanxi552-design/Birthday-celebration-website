@@ -5,23 +5,27 @@
   <meta name="theme-color" content="#ffe24b">
   <meta name="description" content="510的生日限定黑历史数字博物馆。20件珍贵馆藏，6间抽象展厅，今天快乐最大。">
   <title>510 · 年度寿星黑历史数字博物馆 Pro Max</title>
-  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="mobile.css?v=20261018-5"><script type="module" src="app.js?v=20261018-5"></script>
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="mobile.css?v=20261018-6"><link rel="stylesheet" href="intro-motion.css?v=20261018-6"><script type="module" src="app.js?v=20261018-6"></script>
 </head>
 <body class="gate-active">
   <section id="gift-loading" class="gift-loading" aria-labelledby="load-title">
     <div class="gift-panel"><span class="eyebrow">SPECIAL DELIVERY / 寿星专属快递</span><h1 id="load-title">510 的生日礼物<br><span>正在秘密打包。</span></h1>
-    <button id="gift-open" class="gift-box" disabled aria-label="加载完成后拆开生日礼物">🎁</button>
+    <div class="gift-theatre"><span class="gift-orbit orbit-one" aria-hidden="true">✦</span><span class="gift-orbit orbit-two" aria-hidden="true">✳</span><span class="gift-orbit orbit-three" aria-hidden="true">✧</span>
+    <button id="gift-open" class="gift-box" disabled aria-label="加载完成后拆开生日礼物"><span class="gift-art" aria-hidden="true"><svg viewBox="0 0 240 220"><ellipse class="gift-shadow" cx="120" cy="202" rx="75" ry="10"/><g class="gift-present"><g class="gift-base"><rect x="42" y="90" width="156" height="106" rx="6" fill="#ff719f"/><path d="M42 147H198M108 94V194M133 94V194"/><path d="M108 94H133V194H108Z" fill="#ffe24b"/><path d="M57 113H88M57 126H76" opacity=".4"/></g><g class="gift-lid"><path d="M114 75C58 79 65 24 91 38C107 46 115 63 120 76C126 53 151 25 164 41C183 67 145 80 122 76" fill="#ffe24b"/><rect x="32" y="74" width="176" height="30" rx="4" fill="#ff5b45"/><path d="M105 75H135V103H105Z" fill="#ffe24b"/></g><g class="gift-tag"><path d="M146 120 172 112 187 151 160 159Z" fill="#fffdf4"/><path d="M147 120 130 91"/><text x="156" y="143" stroke="none" fill="#191919" font-size="12" font-weight="900" transform="rotate(-20 156 143)">510</text></g></g><g class="gift-sparks" fill="#ffe24b"><path d="m31 42 5 11 12 4-12 5-5 12-4-12-12-5 12-4Z"/><path d="m207 112 4 9 10 3-10 4-4 10-3-10-10-4 10-3Z"/><path d="m192 32 3 7 8 3-8 3-3 8-3-8-8-3 8-3Z"/></g></svg></span><span class="gift-label">礼物打包中…</span></button><span class="gift-ready-stamp" aria-hidden="true">510 限定<br>快乐已装满！</span></div>
     <p id="load-status" role="status">正在准备全部照片和视频……</p><progress id="load-progress" max="100" value="0" aria-label="全部素材加载进度"></progress><p id="load-detail" aria-live="off">正在读取素材清单</p>
     <p class="load-note">一次备齐全部馆藏与影片，之后放心逛。<br>视频较大，首次加载建议使用 Wi-Fi，请保持页面打开。</p></div>
   </section>
   <noscript><p class="noscript">本馆的揭面、放大镜与生日彩蛋需要 JavaScript。请启用后刷新。</p></noscript>
   <dialog id="intro" aria-labelledby="intro-title" aria-describedby="intro-description">
     <video id="intro-video" data-preload-src="assets/intro-loop.mp4" poster="assets/intro-poster.jpg" muted loop playsinline preload="none" aria-label="510戴头套跳舞，点击按钮后才会揭面"></video>
+    <video id="reveal-video" data-preload-src="assets/intro-reveal.mp4" muted playsinline preload="auto" aria-label="510摘头套与兄弟击掌"></video>
     <div class="intro-scrim"></div>
     <div class="intro-top"><a class="brand light" href="#" aria-label="510生日博物馆"><b>510<span>®</span></b><small>BIRTHDAY MUSEUM</small></a><span class="live-tag">● 神秘寿星 / 身份待确认</span></div>
     <div class="intro-copy"><span class="eyebrow acid">WARNING · 前方抽象含量过高</span><h1 id="intro-title">这位悍匪，<br>今天<span>过生日。</span></h1><p id="intro-description">精神状态极其优美。<br>请你亲手，解锁这位神秘大人物。</p><button id="reveal" class="button acid-button">揭开今日大寿星真面目 <span>↗</span></button><p class="intro-note" id="intro-status" role="status">未点击前，头套焊死。点下揭面，510和音效一起登场。</p></div>
     <button id="intro-sound" class="sound-button" data-sound-toggle aria-pressed="true">声音：开</button>
     <button id="intro-retry" class="button error-retry" hidden>视频加载失败，点击重试</button>
+    <div id="reveal-hud" class="reveal-hud" hidden><span class="reveal-pulse" aria-hidden="true">✦</span><div><strong>510 身份解锁中</strong><p id="reveal-status" role="status">正在切入揭秘现场……</p><progress id="reveal-progress" max="100" value="0" aria-label="揭面播放进度"></progress></div><div class="reveal-actions"><button id="continue-reveal" hidden>继续播放 ▶</button><button id="enter-museum">直接入馆 ↗</button></div></div>
+    <div id="entry-curtain" class="entry-curtain" hidden aria-hidden="true"><svg class="entry-dots" viewBox="0 0 1920 1080"><path></path></svg><div class="entry-badge"><small>IDENTITY CONFIRMED / 寿星已签收</small><strong>今日大寿星<br><b>510</b></strong><span>兄弟们，请入场狂欢！ ↗</span></div></div>
     <div class="intro-bottom">CLASSIFIED FOOTAGE <span>NO. 510 / DO NOT TAKE SERIOUSLY</span></div>
   </dialog>
 

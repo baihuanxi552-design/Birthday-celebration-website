@@ -1,3 +1,4 @@
+import {stampKeyframes,glyphKeyframes} from './motion.js';
 // Keep compressed media in Blob URLs for this visit; original photos decode only when opened.
 export async function preloadMedia(files,{fetcher=fetch,onProgress=()=>{},loaded=new Map(),concurrency=3}={}){
   const progress=new Map(files.map(f=>[f.url,loaded.has(f.url)?f.bytes:0]));
@@ -27,16 +28,17 @@ export async function preloadMedia(files,{fetcher=fetch,onProgress=()=>{},loaded
   return {loaded,errors};
 }
 
-export function giftLoading(onEnter){
+export function giftLoading(onEnter,onOpen=()=>{}){
   const screen=document.querySelector('#gift-loading'),button=document.querySelector('#gift-open');
   const status=document.querySelector('#load-status'),bar=document.querySelector('#load-progress'),detail=document.querySelector('#load-detail');
+  const label=button.querySelector('.gift-label'),reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   const urls=new Map(),loaded=new Map();let ready=false;
   const resolve=url=>urls.get(url)||url;
   const run=async()=>{
-    button.disabled=true;button.textContent='🎁';screen.classList.remove('load-failed');
+    button.disabled=true;label.textContent='礼物打包中…';screen.classList.remove('load-failed');
     status.textContent='正在把 510 的黑历史装进礼物盒……';
     try{
-      const response=await fetch('load-manifest.json?v=20261018-3');if(!response.ok)throw new Error('加载清单获取失败');
+      const response=await fetch('load-manifest.json?v=20261018-6');if(!response.ok)throw new Error('加载清单获取失败');
       const files=await response.json();
       const result=await preloadMedia(files,{loaded,onProgress:p=>{
         const percent=p.done===p.count?100:Math.min(99,Math.floor(p.bytes/p.total*100));bar.value=percent;
@@ -57,11 +59,17 @@ export function giftLoading(onEnter){
         const poster=video.getAttribute('poster');if(urls.has(poster))video.poster=resolve(poster);
       });
       ready=true;bar.value=100;screen.classList.add('load-ready');status.textContent='全部素材已就位！点击礼物盒，510 即将登场。';
-      button.textContent='🎁 拆开礼物';button.setAttribute('aria-label','拆开510的生日礼物');button.disabled=false;
-    }catch(error){screen.classList.add('load-failed');status.textContent=`${error.message}。请检查网络后重试，已完成的素材会保留。`;button.textContent='↻ 重试加载';button.setAttribute('aria-label','重试加载未完成的素材');button.disabled=false;}
+      label.textContent='拆开礼物 ↗';button.setAttribute('aria-label','拆开510的生日礼物');button.disabled=false;
+      if(!reduced.matches){
+        button.querySelector('.gift-art').animate(glyphKeyframes(),{duration:650});
+        document.querySelector('.gift-ready-stamp').animate(stampKeyframes(),{duration:650,fill:'both'});
+      }
+    }catch(error){screen.classList.add('load-failed');status.textContent=`${error.message}。请检查网络后重试，已完成的素材会保留。`;label.textContent='↻ 重试加载';button.setAttribute('aria-label','重试加载未完成的素材');button.disabled=false;}
   };
-  button.addEventListener('click',()=>{
+  button.addEventListener('click',async()=>{
     if(!ready){run();return;}
+    button.disabled=true;onOpen();screen.classList.add('gift-opening');label.textContent='快乐正在拆封！';
+    if(!reduced.matches)await button.querySelector('.gift-art').animate([{transform:'scale(1)'},{transform:'scale(.9,1.12)',offset:.25},{transform:'scale(1.14,.92)',offset:.65},{transform:'scale(1.5)',opacity:0}],{duration:700,easing:'cubic-bezier(.34,1.56,.64,1)',fill:'forwards'}).finished.catch(()=>{});
     screen.hidden=true;onEnter(resolve);
   });
   run();return resolve;

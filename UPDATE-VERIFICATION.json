@@ -1,10 +1,10 @@
 {
   "date": "2026-10-18",
-  "automatedTests": 19,
+  "automatedTests": 23,
   "audioEffects": 15,
   "audioSignalChecks": "15 non-zero, mute zero; native browser OfflineAudioContext",
-  "preloadedMedia": 43,
-  "preloadedBytes": 129179176,
+  "preloadedMedia": 44,
+  "preloadedBytes": 130397773,
   "responsiveViewports": [
     [
       320,
@@ -32,5 +32,9 @@
     ]
   ],
   "localFlow": "gift loaded -> open -> reveal -> museum -> interactions -> 35-second video plays",
-  "realPhoneTested": false
+  "realPhoneTested": false,
+  "introRevealSeconds": 4.466667,
+  "introRevealVideo": "720x1280, H264 Main / yuv420p / 30fps / AAC",
+  "introRecovery": "near-end polling and ended; paused/stalled resume; direct entry",
+  "newIntroLocalFlow": "gift unbox -> preloaded reveal -> elastic ticket wipe -> museum; automatic and direct entry verified"
 }
