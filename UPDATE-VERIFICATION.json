@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-18",
+  "automatedTests": 19,
+  "audioEffects": 15,
+  "audioSignalChecks": "15 non-zero, mute zero; native browser OfflineAudioContext",
+  "preloadedMedia": 43,
+  "preloadedBytes": 129179176,
+  "responsiveViewports": [
+    [
+      320,
+      568
+    ],
+    [
+      375,
+      667
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      430,
+      932
+    ],
+    [
+      844,
+      390
+    ],
+    [
+      1280,
+      720
+    ]
+  ],
+  "localFlow": "gift loaded -> open -> reveal -> museum -> interactions -> 35-second video plays",
+  "realPhoneTested": false
+}
