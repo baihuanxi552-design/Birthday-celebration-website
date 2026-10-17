@@ -8,7 +8,7 @@ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
 let resolveMedia=url=>url;
 const asset=id=>resolveMedia(`assets/${assetNames[id]}`);
 const intro=$('#intro'),introVideo=$('#intro-video'),reveal=$('#reveal'),museum=$('#museum');
-let phase='masked',muted=false,unsealed=false,suited=false,locked=false,quoteIndex=0,powerPhase=0;
+let phase='masked',muted=false,unsealed=false,suited=false,locked=false,quoteIndex=0,powerPhase=0,currentSpeech=1;
 const sfx=new SoundEffects();
 const playSound=name=>sfx.play(name).catch(()=>{$('#sound-status').textContent='音效暂未开启，请点声音开关重试。';});
 const syncSoundUI=()=>document.querySelectorAll('[data-sound-toggle]').forEach(button=>{
@@ -195,15 +195,23 @@ $('#glitch').addEventListener('click',()=>{
 });
 
 const speechNames={1:'很久以前',2:'深情演说',3:'Windows 未激活',16:'火锅大仙',17:'奖牌在手'};
-const quotes=['Windows 未激活，但我的抽象已激活！','麦克风给我，主打一个闭眼输出。','奖牌在手，天下我有。','进可电玩城戴手套，退可火锅店吞云吐雾。','别人吃火锅，我在渡劫。','很久以前，510还以为这些照片不会被发现。'];
+const quotes={
+  1:['很久以前，510还以为这些照片不会被发现。','大屏写着“很久以前”，510的传说就从这里开场。'],
+  2:['麦克风给我，主打一个闭眼输出。','眼睛一闭，麦克风一拿，情绪价值直接拉满。'],
+  3:['Windows 未激活，但我的抽象已激活！','兄弟已经同框，Windows 还在等激活。'],
+  16:['别人吃火锅，我在渡劫。','锅里冒的是热气，510脸上飘的是仙气。'],
+  17:['奖牌在手，得意的小表情藏都藏不住。','请看清楚：510今天可是有奖牌的人！']
+};
 const addQuote=()=>{
   playSound('quote');
   const box=$('#quotes');if(box.children.length>=4)box.firstElementChild.remove();
-  const quote=document.createElement('div');quote.className='quote';quote.textContent=quotes[quoteIndex%quotes.length];quote.style.top=`${23+(quoteIndex%3)*20}%`;quoteIndex++;box.append(quote);
+  const lines=quotes[currentSpeech];
+  const quote=document.createElement('div');quote.className='quote';quote.textContent=lines[quoteIndex%lines.length];quote.style.top=`${23+(quoteIndex%3)*20}%`;quoteIndex++;box.append(quote);
   quote.addEventListener('animationend',()=>quote.remove());
   if(reduced.matches)setTimeout(()=>quote.remove(),4000);
 };
 document.querySelectorAll('[data-speech]').forEach(button=>button.addEventListener('click',()=>{
+  currentSpeech=Number(button.dataset.speech);quoteIndex=0;$('#quotes').replaceChildren();
   const id=Number(button.dataset.speech);$('#speech-image').src=asset(id);$('#speech-image').srcset=resolveMedia(`assets/previews/${assetNames[id].replace(/\.(jpg|png)$/i,'.jpg')}`);$('#speech-image').alt=labels[id];$('#speech-original').dataset.view=id;
   $('#speech-index').textContent=`EXHIBIT ${String(id).padStart(2,'0')} / ${speechNames[id]}`;
   document.querySelectorAll('[data-speech]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));addQuote();
