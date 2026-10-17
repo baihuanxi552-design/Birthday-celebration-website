@@ -38,7 +38,7 @@ export function giftLoading(onEnter,onOpen=()=>{}){
     button.disabled=true;label.textContent='礼物打包中…';screen.classList.remove('load-failed');
     status.textContent='正在把 510 的黑历史装进礼物盒……';
     try{
-      const response=await fetch('load-manifest.json?v=20261018-6');if(!response.ok)throw new Error('加载清单获取失败');
+      const response=await fetch('load-manifest.json?v=20261018-7');if(!response.ok)throw new Error('加载清单获取失败');
       const files=await response.json();
       const result=await preloadMedia(files,{loaded,onProgress:p=>{
         const percent=p.done===p.count?100:Math.min(99,Math.floor(p.bytes/p.total*100));bar.value=percent;

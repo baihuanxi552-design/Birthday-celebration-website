@@ -1,10 +1,10 @@
 {
   "date": "2026-10-18",
-  "automatedTests": 23,
+  "automatedTests": 24,
   "audioEffects": 15,
   "audioSignalChecks": "15 non-zero, mute zero; native browser OfflineAudioContext",
   "preloadedMedia": 44,
-  "preloadedBytes": 130397773,
+  "preloadedBytes": 126309332,
   "responsiveViewports": [
     [
       320,
@@ -36,5 +36,16 @@
   "introRevealSeconds": 4.466667,
   "introRevealVideo": "720x1280, H264 Main / yuv420p / 30fps / AAC",
   "introRecovery": "near-end polling and ended; paused/stalled resume; direct entry",
-  "newIntroLocalFlow": "gift unbox -> preloaded reveal -> elastic ticket wipe -> museum; automatic and direct entry verified"
+  "newIntroLocalFlow": "gift unbox -> preloaded reveal -> elastic ticket wipe -> museum; automatic and direct entry verified",
+  "cinema": {
+    "file": "assets/birthday-masterpiece-readable.mp4",
+    "durationSeconds": 66.005,
+    "frames": 1980,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "bytes": 43958840,
+    "fullDecodePassed": true,
+    "deterministicStillPassed": true
+  }
 }

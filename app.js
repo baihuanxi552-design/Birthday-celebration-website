@@ -1,7 +1,7 @@
 import {assetNames,clamp,comicState,lensGeometry} from './logic.js';
 import {halftonePath,stampKeyframes,glyphKeyframes} from './motion.js';
 import {SoundEffects} from './sound.js';
-import {giftLoading} from './loading.js?v=20261018-6';
+import {giftLoading} from './loading.js?v=20261018-7';
 import {revealPlayback} from './reveal.js?v=20261018-6';
 
 const $=selector=>document.querySelector(selector);
@@ -262,7 +262,7 @@ $('#play-film').addEventListener('click',()=>{
   if(film.error)film.load();
   film.play().catch(()=>{$('#cinema-status').textContent='请点击播放器内的播放按钮，或检查视频文件是否已完整加载。';});
 });
-film.addEventListener('play',()=>{sfx.stopAll();$('#play-film').innerHTML='暂停一下，让寿星缓缓 <span>Ⅱ</span>';$('#cinema-status').textContent='正在放映：510的35秒抽象人生。';});
+film.addEventListener('play',()=>{sfx.stopAll();$('#play-film').innerHTML='暂停一下，让寿星缓缓 <span>Ⅱ</span>';$('#cinema-status').textContent='正在放映：510的66秒抽象人生。';});
 film.addEventListener('pause',()=>{$('#play-film').innerHTML='继续观看生日大片 <span>▶</span>';});
 film.addEventListener('ended',()=>{$('#play-film').innerHTML='再来一遍，快乐加倍 <span>↻</span>';$('#cinema-status').textContent='正片结束，往下还有兄弟们的生日祝福。';});
 film.addEventListener('error',()=>{$('#cinema-status').textContent='正片未加载成功，点播放按钮重新加载。';});
