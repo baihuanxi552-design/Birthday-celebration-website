@@ -1,0 +1,90 @@
+[
+  {
+    "viewport": [
+      320,
+      568
+    ],
+    "clipped": [],
+    "height": 568,
+    "quotesOutsidePhoto": true,
+    "scrollWidth": 305,
+    "width": 305
+  },
+  {
+    "viewport": [
+      375,
+      667
+    ],
+    "clipped": [],
+    "height": 667,
+    "quotesOutsidePhoto": true,
+    "scrollWidth": 361,
+    "width": 360
+  },
+  {
+    "viewport": [
+      390,
+      844
+    ],
+    "clipped": [],
+    "height": 844,
+    "quotesOutsidePhoto": true,
+    "scrollWidth": 375,
+    "width": 375
+  },
+  {
+    "viewport": [
+      430,
+      932
+    ],
+    "clipped": [],
+    "height": 932,
+    "quotesOutsidePhoto": true,
+    "scrollWidth": 415,
+    "width": 415
+  },
+  {
+    "viewport": [
+      768,
+      1024
+    ],
+    "clipped": [],
+    "height": 1024,
+    "quotesOutsidePhoto": true,
+    "scrollWidth": 753,
+    "width": 753
+  },
+  {
+    "viewport": [
+      1280,
+      720
+    ],
+    "clipped": [],
+    "height": 720,
+    "quotesOutsidePhoto": true,
+    "scrollWidth": 1265,
+    "width": 1265
+  },
+  {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "clipped": [],
+    "height": 1080,
+    "quotesOutsidePhoto": true,
+    "scrollWidth": 1905,
+    "width": 1905
+  },
+  {
+    "viewport": [
+      844,
+      390
+    ],
+    "clipped": [],
+    "height": 390,
+    "quotesOutsidePhoto": true,
+    "scrollWidth": 829,
+    "width": 829
+  }
+]

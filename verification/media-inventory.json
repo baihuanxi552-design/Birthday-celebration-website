@@ -1,0 +1,726 @@
+[
+  {
+    "url": "assets/01_intro.jpg",
+    "bytes": 374875,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 2,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 2812,
+          "height": 1280
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/02_mic.jpg",
+    "bytes": 186027,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1024,
+          "height": 2252
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/03_win.jpg",
+    "bytes": 388307,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 2,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 2812,
+          "height": 1280
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/04_warn.jpg",
+    "bytes": 47670,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 600,
+          "height": 800
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/05_glove.jpg",
+    "bytes": 49766,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 600,
+          "height": 800
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/06_cube.jpg",
+    "bytes": 38255,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 600,
+          "height": 800
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/07_blur.jpg",
+    "bytes": 114390,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1279,
+          "height": 1706
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/08_bed.jpg",
+    "bytes": 31033,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 2,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 600,
+          "height": 800
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/09_stand.jpg",
+    "bytes": 170522,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1279,
+          "height": 1706
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/10_bros.png",
+    "bytes": 1300138,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1155,
+          "height": 1406
+        }
+      ],
+      "format": {}
+    }
+  },
+  {
+    "url": "assets/11_mask_dance.mp4",
+    "bytes": 27335807,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 0,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080,
+          "side_data_list": [
+            {}
+          ]
+        },
+        {
+          "codec_type": "audio"
+        }
+      ],
+      "format": {
+        "duration": "11.648000"
+      }
+    }
+  },
+  {
+    "url": "assets/12_sleep_face.jpg",
+    "bytes": 466853,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1279,
+          "height": 1706
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/13_daze.jpg",
+    "bytes": 1936511,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 2,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 213,
+          "height": 540
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/14_neck_tilt.jpg",
+    "bytes": 3515384,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 2,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1244,
+          "height": 2160
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/15_umbrella_peek.jpg",
+    "bytes": 3710718,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 3072,
+          "height": 4550
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/16_hotpot.jpg",
+    "bytes": 6378322,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 3280,
+          "height": 2464
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/17_medal.jpg",
+    "bytes": 113705,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 1120,
+          "height": 1494
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/18_class_laugh.jpg",
+    "bytes": 22909513,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 3840,
+          "height": 2160
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/19_suits_five.jpg",
+    "bytes": 2766485,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 4096,
+          "height": 3072
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/20_polaroid.jpg",
+    "bytes": 4810250,
+    "stage": "original: lightbox / magnifier / proof",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    },
+    "dimensions": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_type": "video",
+          "width": 4436,
+          "height": 4134
+        }
+      ],
+      "format": {
+        "duration": "0.040000"
+      }
+    }
+  },
+  {
+    "url": "assets/previews/01_intro.jpg",
+    "bytes": 96401,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 2,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/02_mic.jpg",
+    "bytes": 86478,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/03_win.jpg",
+    "bytes": 113431,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/04_warn.jpg",
+    "bytes": 52650,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/05_glove.jpg",
+    "bytes": 54229,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/06_cube.jpg",
+    "bytes": 40277,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/07_blur.jpg",
+    "bytes": 114620,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 1,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/08_bed.jpg",
+    "bytes": 31037,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 2,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/09_stand.jpg",
+    "bytes": 180739,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/10_bros.jpg",
+    "bytes": 127883,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/12_sleep_face.jpg",
+    "bytes": 111646,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 1
+    }
+  },
+  {
+    "url": "assets/previews/13_daze.jpg",
+    "bytes": 16093,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 2,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/14_neck_tilt.jpg",
+    "bytes": 66133,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 2,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/15_umbrella_peek.jpg",
+    "bytes": 257845,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/16_hotpot.jpg",
+    "bytes": 246385,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/17_medal.jpg",
+    "bytes": 115395,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/18_class_laugh.jpg",
+    "bytes": 97509,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/19_suits_five.jpg",
+    "bytes": 144885,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/previews/20_polaroid.jpg",
+    "bytes": 125676,
+    "stage": "gallery: native lazy preview",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/intro-reveal.mp4",
+    "bytes": 1218597,
+    "stage": "opening: native poster/metadata",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/intro-loop.mp4",
+    "bytes": 1675755,
+    "stage": "opening: native poster/metadata",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/intro-poster.jpg",
+    "bytes": 37498,
+    "stage": "opening: native poster/metadata",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "assets/birthday-masterpiece-readable.mp4",
+    "bytes": 43958840,
+    "stage": "cinema: user play",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  },
+  {
+    "url": "cinema-poster.png",
+    "bytes": 694799,
+    "stage": "cinema: poster near viewport",
+    "references": {
+      "html": 1,
+      "css": 0,
+      "jsLiteral": 0
+    }
+  }
+]

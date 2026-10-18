@@ -1,0 +1,86 @@
+[
+  {
+    "path": "assets/01_intro.jpg",
+    "sha256": "752c88897258ec40ee281925e3d4b34681ad33c3db795fb0882d6f75a811ad8c"
+  },
+  {
+    "path": "assets/02_mic.jpg",
+    "sha256": "2e881864ab3bf510c5614cd107252b64a6fa8e448078289bba3b083ccdc3f97c"
+  },
+  {
+    "path": "assets/03_win.jpg",
+    "sha256": "ade0e3dd557102451932e24f7bd3f9bee08b60365f792cb803ae64700af1bbac"
+  },
+  {
+    "path": "assets/04_warn.jpg",
+    "sha256": "ef2d424e55203503a5156b08cb9efe7a7769a5346eb9557e1ea14cd9e78b274b"
+  },
+  {
+    "path": "assets/05_glove.jpg",
+    "sha256": "32c5fad519b58cf530462288bd0245c1b8aefe4131e267aee6396786b007e5e5"
+  },
+  {
+    "path": "assets/06_cube.jpg",
+    "sha256": "7de5660d96521bd0fae1892d24fd79db50c7bf64e35d679cf1c458689cddcda7"
+  },
+  {
+    "path": "assets/07_blur.jpg",
+    "sha256": "c50ebdc1b668e8bbcb510c2e616657206191b6d5d216a72a2375a520e69757ea"
+  },
+  {
+    "path": "assets/08_bed.jpg",
+    "sha256": "c7805550b128999d2151d6e593e071b268d691b1d4913b70d318c29e0761c14b"
+  },
+  {
+    "path": "assets/09_stand.jpg",
+    "sha256": "3534caee9bacbdfaa5627d315db0eed682d0bfa3b0bb48fe8f5e6233b75c4fbc"
+  },
+  {
+    "path": "assets/10_bros.png",
+    "sha256": "d2c926bc4b4fa411d941a685e0f08df2dfa060a157d38f965956905295ddde36"
+  },
+  {
+    "path": "assets/11_mask_dance.mp4",
+    "sha256": "f105d990041150e4238bc5b6ca602e3adff126dbf64a0539a4bbb6ddd3cb5768"
+  },
+  {
+    "path": "assets/12_sleep_face.jpg",
+    "sha256": "fd8e6a3e43fc5d5fc8516a1a1a8bb0078125e50fbbe1e1995b89ae1f4be5b4a2"
+  },
+  {
+    "path": "assets/13_daze.jpg",
+    "sha256": "541cf0b68b8074c2dd03d6ba3d36267cd5e1b043bd7a13da26d808800a5d1386"
+  },
+  {
+    "path": "assets/14_neck_tilt.jpg",
+    "sha256": "7e6be99bdbe80fd5c275f69dc9dde84657f8853b18c362c29618648dff8240e6"
+  },
+  {
+    "path": "assets/15_umbrella_peek.jpg",
+    "sha256": "8d45d60ba6563c256b7db26a194dcfb7406c9f8e47323079e64854e2883f07d1"
+  },
+  {
+    "path": "assets/16_hotpot.jpg",
+    "sha256": "ddd4638dcfdb808952593409d012c83aca2774e247a37ab8cc48475e133bcf40"
+  },
+  {
+    "path": "assets/17_medal.jpg",
+    "sha256": "66d809ed8b19fcf88ea7553b0702034f9ca555a2b4dbdd5859e9c178e5f1a3a1"
+  },
+  {
+    "path": "assets/18_class_laugh.jpg",
+    "sha256": "80abbeda07256b27e086817bbd32ea7ef6fb3c84519cf6440e72b5e89081bf81"
+  },
+  {
+    "path": "assets/19_suits_five.jpg",
+    "sha256": "668757b2247fefbcbf916aaf2a45b6e9414cb83e40bbf823db698e6cafdf610e"
+  },
+  {
+    "path": "assets/20_polaroid.jpg",
+    "sha256": "3e6e919ab01fd3ddc10d61a457852c38ed72bb11553b69448badffcb5e64da34"
+  },
+  {
+    "path": "assets/birthday-masterpiece-readable.mp4",
+    "sha256": "8eb10803cb64c9a2474ac1afe047de103031b1618050374c22a8599bb1fa9450"
+  }
+]

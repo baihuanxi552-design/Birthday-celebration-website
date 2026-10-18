@@ -1,0 +1,337 @@
+{
+  "checks": [
+    {
+      "url": "assets/01_intro.jpg",
+      "status": 200,
+      "bytes": 374875
+    },
+    {
+      "url": "assets/02_mic.jpg",
+      "status": 200,
+      "bytes": 186027
+    },
+    {
+      "url": "assets/03_win.jpg",
+      "status": 200,
+      "bytes": 388307
+    },
+    {
+      "url": "assets/04_warn.jpg",
+      "status": 200,
+      "bytes": 47670
+    },
+    {
+      "url": "assets/05_glove.jpg",
+      "status": 200,
+      "bytes": 49766
+    },
+    {
+      "url": "assets/06_cube.jpg",
+      "status": 200,
+      "bytes": 38255
+    },
+    {
+      "url": "assets/07_blur.jpg",
+      "status": 200,
+      "bytes": 114390
+    },
+    {
+      "url": "assets/08_bed.jpg",
+      "status": 200,
+      "bytes": 31033
+    },
+    {
+      "url": "assets/09_stand.jpg",
+      "status": 200,
+      "bytes": 170522
+    },
+    {
+      "url": "assets/10_bros.png",
+      "status": 200,
+      "bytes": 1300138
+    },
+    {
+      "url": "assets/11_mask_dance.mp4",
+      "status": 200,
+      "bytes": 27335807
+    },
+    {
+      "url": "assets/12_sleep_face.jpg",
+      "status": 200,
+      "bytes": 466853
+    },
+    {
+      "url": "assets/13_daze.jpg",
+      "status": 200,
+      "bytes": 1936511
+    },
+    {
+      "url": "assets/14_neck_tilt.jpg",
+      "status": 200,
+      "bytes": 3515384
+    },
+    {
+      "url": "assets/15_umbrella_peek.jpg",
+      "status": 200,
+      "bytes": 3710718
+    },
+    {
+      "url": "assets/16_hotpot.jpg",
+      "status": 200,
+      "bytes": 6378322
+    },
+    {
+      "url": "assets/17_medal.jpg",
+      "status": 200,
+      "bytes": 113705
+    },
+    {
+      "url": "assets/18_class_laugh.jpg",
+      "status": 200,
+      "bytes": 22909513
+    },
+    {
+      "url": "assets/19_suits_five.jpg",
+      "status": 200,
+      "bytes": 2766485
+    },
+    {
+      "url": "assets/20_polaroid.jpg",
+      "status": 200,
+      "bytes": 4810250
+    },
+    {
+      "url": "assets/previews/01_intro.jpg",
+      "status": 200,
+      "bytes": 96401
+    },
+    {
+      "url": "assets/previews/02_mic.jpg",
+      "status": 200,
+      "bytes": 86478
+    },
+    {
+      "url": "assets/previews/03_win.jpg",
+      "status": 200,
+      "bytes": 113431
+    },
+    {
+      "url": "assets/previews/04_warn.jpg",
+      "status": 200,
+      "bytes": 52650
+    },
+    {
+      "url": "assets/previews/05_glove.jpg",
+      "status": 200,
+      "bytes": 54229
+    },
+    {
+      "url": "assets/previews/06_cube.jpg",
+      "status": 200,
+      "bytes": 40277
+    },
+    {
+      "url": "assets/previews/07_blur.jpg",
+      "status": 200,
+      "bytes": 114620
+    },
+    {
+      "url": "assets/previews/08_bed.jpg",
+      "status": 200,
+      "bytes": 31037
+    },
+    {
+      "url": "assets/previews/09_stand.jpg",
+      "status": 200,
+      "bytes": 180739
+    },
+    {
+      "url": "assets/previews/10_bros.jpg",
+      "status": 200,
+      "bytes": 127883
+    },
+    {
+      "url": "assets/previews/12_sleep_face.jpg",
+      "status": 200,
+      "bytes": 111646
+    },
+    {
+      "url": "assets/previews/13_daze.jpg",
+      "status": 200,
+      "bytes": 16093
+    },
+    {
+      "url": "assets/previews/14_neck_tilt.jpg",
+      "status": 200,
+      "bytes": 66133
+    },
+    {
+      "url": "assets/previews/15_umbrella_peek.jpg",
+      "status": 200,
+      "bytes": 257845
+    },
+    {
+      "url": "assets/previews/16_hotpot.jpg",
+      "status": 200,
+      "bytes": 246385
+    },
+    {
+      "url": "assets/previews/17_medal.jpg",
+      "status": 200,
+      "bytes": 115395
+    },
+    {
+      "url": "assets/previews/18_class_laugh.jpg",
+      "status": 200,
+      "bytes": 97509
+    },
+    {
+      "url": "assets/previews/19_suits_five.jpg",
+      "status": 200,
+      "bytes": 144885
+    },
+    {
+      "url": "assets/previews/20_polaroid.jpg",
+      "status": 200,
+      "bytes": 125676
+    },
+    {
+      "url": "assets/intro-reveal.mp4",
+      "status": 200,
+      "bytes": 1218597
+    },
+    {
+      "url": "assets/intro-loop.mp4",
+      "status": 200,
+      "bytes": 1675755
+    },
+    {
+      "url": "assets/intro-poster.jpg",
+      "status": 200,
+      "bytes": 37498
+    },
+    {
+      "url": "assets/birthday-masterpiece-readable.mp4",
+      "status": 200,
+      "bytes": 43958840
+    },
+    {
+      "url": "cinema-poster.png",
+      "status": 200,
+      "bytes": 694799
+    }
+  ],
+  "range": {
+    "status": 206,
+    "bytes": 1024,
+    "contentRange": "bytes 100000-101023/43958840"
+  },
+  "all50QuotesUnchanged": true,
+  "media": [
+    {
+      "path": "public/assets/01_intro.jpg",
+      "sha256": "752c88897258ec40ee281925e3d4b34681ad33c3db795fb0882d6f75a811ad8c",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/02_mic.jpg",
+      "sha256": "2e881864ab3bf510c5614cd107252b64a6fa8e448078289bba3b083ccdc3f97c",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/03_win.jpg",
+      "sha256": "ade0e3dd557102451932e24f7bd3f9bee08b60365f792cb803ae64700af1bbac",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/04_warn.jpg",
+      "sha256": "ef2d424e55203503a5156b08cb9efe7a7769a5346eb9557e1ea14cd9e78b274b",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/05_glove.jpg",
+      "sha256": "32c5fad519b58cf530462288bd0245c1b8aefe4131e267aee6396786b007e5e5",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/06_cube.jpg",
+      "sha256": "7de5660d96521bd0fae1892d24fd79db50c7bf64e35d679cf1c458689cddcda7",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/07_blur.jpg",
+      "sha256": "c50ebdc1b668e8bbcb510c2e616657206191b6d5d216a72a2375a520e69757ea",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/08_bed.jpg",
+      "sha256": "c7805550b128999d2151d6e593e071b268d691b1d4913b70d318c29e0761c14b",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/09_stand.jpg",
+      "sha256": "3534caee9bacbdfaa5627d315db0eed682d0bfa3b0bb48fe8f5e6233b75c4fbc",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/10_bros.png",
+      "sha256": "d2c926bc4b4fa411d941a685e0f08df2dfa060a157d38f965956905295ddde36",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/11_mask_dance.mp4",
+      "sha256": "f105d990041150e4238bc5b6ca602e3adff126dbf64a0539a4bbb6ddd3cb5768",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/12_sleep_face.jpg",
+      "sha256": "fd8e6a3e43fc5d5fc8516a1a1a8bb0078125e50fbbe1e1995b89ae1f4be5b4a2",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/13_daze.jpg",
+      "sha256": "541cf0b68b8074c2dd03d6ba3d36267cd5e1b043bd7a13da26d808800a5d1386",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/14_neck_tilt.jpg",
+      "sha256": "7e6be99bdbe80fd5c275f69dc9dde84657f8853b18c362c29618648dff8240e6",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/15_umbrella_peek.jpg",
+      "sha256": "8d45d60ba6563c256b7db26a194dcfb7406c9f8e47323079e64854e2883f07d1",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/16_hotpot.jpg",
+      "sha256": "ddd4638dcfdb808952593409d012c83aca2774e247a37ab8cc48475e133bcf40",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/17_medal.jpg",
+      "sha256": "66d809ed8b19fcf88ea7553b0702034f9ca555a2b4dbdd5859e9c178e5f1a3a1",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/18_class_laugh.jpg",
+      "sha256": "80abbeda07256b27e086817bbd32ea7ef6fb3c84519cf6440e72b5e89081bf81",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/19_suits_five.jpg",
+      "sha256": "668757b2247fefbcbf916aaf2a45b6e9414cb83e40bbf823db698e6cafdf610e",
+      "unchanged": true
+    },
+    {
+      "path": "public/assets/20_polaroid.jpg",
+      "sha256": "3e6e919ab01fd3ddc10d61a457852c38ed72bb11553b69448badffcb5e64da34",
+      "unchanged": true
+    },
+    {
+      "path": "out/birthday-masterpiece-readable.mp4",
+      "sha256": "8eb10803cb64c9a2474ac1afe047de103031b1618050374c22a8599bb1fa9450",
+      "unchanged": true
+    }
+  ]
+}

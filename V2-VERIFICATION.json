@@ -1,0 +1,215 @@
+{
+  "version": "2.0.0",
+  "baselineCommit": "e498e423dfeca71dd90a166da23ec8b84b7f9e70",
+  "measuredAt": "2026-10-18T00:21:37.555Z",
+  "tests": {
+    "originalProject": {
+      "passed": 27,
+      "failed": 0
+    },
+    "standaloneRepository": {
+      "passed": 6,
+      "failed": 0
+    },
+    "baselineProjectPassed": 24
+  },
+  "performance": {
+    "method": "Cua browser, local server, per-response 2 MiB/s with 64 KiB burst and 80ms latency, media/code Cache-Control no-store, independent origins, one measured sample per version, gift enabled timestamp from MutationObserver",
+    "baseline": {
+      "readyMs": 41931.300000000745,
+      "completedTransferBytes": 128989630,
+      "completedRequests": 73
+    },
+    "candidate": {
+      "readyMs": 297.80000000074506,
+      "completedTransferBytes": 308916,
+      "completedRequests": 11
+    },
+    "weak": {
+      "profile": "per-response 64 KiB/s, 64 KiB burst, 400ms latency",
+      "readyMs": 2465.800000000745,
+      "completedTransferBytes": 308135,
+      "completedRequests": 11
+    },
+    "limitations": "Not Lighthouse or real cellular measurements. Bytes/requests count completed ResourceTiming entries at readiness and exclude HTML, in-flight native metadata reads and later browsing; optional opening video metadata continues after gate readiness."
+  },
+  "preserved": {
+    "originalAssets": 20,
+    "originalMovieSeconds": 66.005,
+    "sha256Unchanged": 21,
+    "all50QuotesUnchanged": true,
+    "media404": 0
+  },
+  "responsive": [
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "clipped": [],
+      "height": 568,
+      "quotesOutsidePhoto": true,
+      "scrollWidth": 305,
+      "width": 305
+    },
+    {
+      "viewport": [
+        375,
+        667
+      ],
+      "clipped": [],
+      "height": 667,
+      "quotesOutsidePhoto": true,
+      "scrollWidth": 361,
+      "width": 360
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "clipped": [],
+      "height": 844,
+      "quotesOutsidePhoto": true,
+      "scrollWidth": 375,
+      "width": 375
+    },
+    {
+      "viewport": [
+        430,
+        932
+      ],
+      "clipped": [],
+      "height": 932,
+      "quotesOutsidePhoto": true,
+      "scrollWidth": 415,
+      "width": 415
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "clipped": [],
+      "height": 1024,
+      "quotesOutsidePhoto": true,
+      "scrollWidth": 753,
+      "width": 753
+    },
+    {
+      "viewport": [
+        1280,
+        720
+      ],
+      "clipped": [],
+      "height": 720,
+      "quotesOutsidePhoto": true,
+      "scrollWidth": 1265,
+      "width": 1265
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "clipped": [],
+      "height": 1080,
+      "quotesOutsidePhoto": true,
+      "scrollWidth": 1905,
+      "width": 1905
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "clipped": [],
+      "height": 390,
+      "quotesOutsidePhoto": true,
+      "scrollWidth": 829,
+      "width": 829
+    }
+  ],
+  "browserChecks": [
+    {
+      "name": "first gift and full reveal auto entry",
+      "result": "passed"
+    },
+    {
+      "name": "repeat visit quick entry and replay opening",
+      "result": "passed"
+    },
+    {
+      "name": "hero crown glasses flip",
+      "result": "passed"
+    },
+    {
+      "name": "all six main exhibit interactions",
+      "result": "passed"
+    },
+    {
+      "name": "50 comments unchanged and five image groups switch correctly",
+      "result": "passed"
+    },
+    {
+      "name": "HQ lightbox, fixed background, reachable close and restored scroll",
+      "result": "passed"
+    },
+    {
+      "name": "film native play/pause, duration and mute",
+      "result": "passed"
+    },
+    {
+      "name": "birthday candles, original blessing and return to exhibits",
+      "result": "passed"
+    },
+    {
+      "name": "mobile dock links",
+      "result": "passed"
+    },
+    {
+      "name": "503 cover/photo/reveal/cinema failures, skip and recovery",
+      "result": "passed"
+    },
+    {
+      "name": "rapid double clicks for police/glitch/quotes",
+      "result": "passed"
+    },
+    {
+      "name": "touch tap/horizontal/vertical logic",
+      "result": "passed with synthetic PointerEvents in browser fixture; not hardware touch"
+    },
+    {
+      "name": "background pause",
+      "result": "passed with synthetic visibilitychange fixture; actual leave/back performed and browser reloaded document"
+    },
+    {
+      "name": "reduced motion",
+      "result": "JS branch passed with matchMedia QA injection; production CSS media rules inspected; OS preference not emulated"
+    },
+    {
+      "name": "HTTP Range",
+      "result": "206, bytes 100000-101023/43958840, 1024 bytes"
+    },
+    {
+      "name": "complete 66-second film and replay",
+      "result": "passed",
+      "state": {
+        "button": "再来一遍，快乐加倍 ↻",
+        "duration": 66.005,
+        "ended": true,
+        "paused": true,
+        "status": "正片结束，往下还有兄弟们的生日祝福。",
+        "time": 66.005
+      },
+      "replayTime": 0.098905
+    }
+  ],
+  "notVerified": [
+    "Physical Android/iOS browser gestures, dynamic address bar, keyboard and safe areas",
+    "Native fullscreen enter/exit on actual phone",
+    "OS-level reduced-motion visual regression",
+    "Lighthouse scores and device frame-time/memory profiling"
+  ],
+  "evidence": "verification/ contains measured timing, viewport, media integrity and browser fixture reports; local screenshots under qa/v2/"
+}

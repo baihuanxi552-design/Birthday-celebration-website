@@ -1,0 +1,18 @@
+
+> 510-birthday-museum@2.0.0 test
+> node --test tests/*.test.mjs
+
+✔ two-item stage reports real completion, including a recoverable failure (1.4769ms)
+✔ image timeout releases callbacks and a new attempt can succeed (9.0309ms)
+✔ gate has no Blob/full-media fetch; cinema remains on demand (0.8879ms)
+✔ reveal reset supports replay and duplicate starts finish only once (1.4493ms)
+✔ all 20 original assets and the 66-second movie match the frozen baseline (100.5949ms)
+✔ a user can resume reveal completion checks after page departure (0.3634ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 171.1899
