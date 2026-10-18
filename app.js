@@ -55,6 +55,8 @@ const playback=revealPlayback(revealVideo,{
 async function enterMuseum(){
   if(phase==='entering'||phase==='entered')return;
   phase='entering';$('#gift-open').disabled=true;$('#quick-enter').disabled=true;playback.stop();introVideo.pause();revealVideo.pause();hud.hidden=true;
+  if(!intro.open)document.body.append(curtain);
+  for(const target of [curtain,$('.entry-badge')])target.getAnimations().forEach(animation=>animation.cancel());
   curtain.hidden=false;
   if(!reduced.matches){
     $('.entry-badge').animate(stampKeyframes(),{duration:520,fill:'both'});
@@ -73,6 +75,7 @@ async function enterMuseum(){
   const title=$('#hero-title');title.tabIndex=-1;title.focus({preventScroll:true});
 }
 const openIntro=()=>{
+  intro.append(curtain);
   for(const video of [introVideo,revealVideo])if(!video.getAttribute('src')){video.src=video.dataset.preloadSrc;video.load();}
   phase='masked';playback.reset();reveal.disabled=false;hud.hidden=true;continueReveal.hidden=true;
   intro.classList.remove('revealing','reveal-playing','playback-blocked');$('#reveal-progress').value=0;

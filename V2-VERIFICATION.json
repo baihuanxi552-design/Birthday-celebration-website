@@ -21,8 +21,8 @@
       "completedRequests": 73
     },
     "candidate": {
-      "readyMs": 297.80000000074506,
-      "completedTransferBytes": 308916,
+      "readyMs": 301.80000000074506,
+      "completedTransferBytes": 309105,
       "completedRequests": 11
     },
     "weak": {
@@ -203,6 +203,10 @@
         "time": 66.005
       },
       "replayTime": 0.098905
+    },
+    {
+      "name": "replayed intro curtain top-layer and animation cleanup",
+      "result": "passed; curtain reattached to intro before showModal"
     }
   ],
   "notVerified": [
