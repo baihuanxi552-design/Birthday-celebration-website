@@ -147,3 +147,29 @@ body.modal-open{position:fixed;width:100%;overflow:hidden}.photo-retry{display:b
 .gift-loading{overflow-x:hidden;overflow-y:auto}.gift-panel{min-width:0}
 
 .dialog-close{color:var(--ink)}
+/* Birthday admission: a permanent paper ticket, stamped once when it comes into view. */
+.admission-section{padding-top:54px;padding-bottom:0}
+.admission-ticket{width:min(100%,1100px);margin:auto;border:10px solid var(--yellow);outline:2px solid var(--ink);box-shadow:7px 7px 0 var(--ink);background:#fffdf4}
+.admission-inner{border:2px dashed var(--ink);padding:clamp(16px,2.5vw,28px)}
+.admission-header{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--ink);padding-bottom:17px;font-size:12px;font-weight:900;letter-spacing:.3px}
+.admission-header svg{width:28px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.admission-body{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:24px;padding:25px 0 20px;align-items:center}
+.admission-copy .eyebrow{font-size:10px;letter-spacing:1px;line-height:1.7}
+.admission-copy h2{font-size:clamp(25px,3.5vw,38px);line-height:1.3;letter-spacing:-1px;margin:12px 0 15px}
+.admission-holder{font-size:clamp(16px,2vw,23px);font-weight:700;margin:0 0 19px;line-height:1.7}
+.admission-details{font-size:14px;line-height:1.9;margin:0}
+.admission-stub{display:grid;justify-items:center;align-content:center;border-left:2px dashed var(--ink);padding-left:20px;gap:4px;min-width:0}
+#admission-number{font:900 clamp(28px,3vw,38px)/1.2 Arial,sans-serif;color:#df256c;white-space:nowrap}
+.admission-stamp{width:142px;height:142px;overflow:visible;opacity:0;color:#c92c39;transform:rotate(-8deg);mix-blend-mode:multiply;pointer-events:none}
+.admission-stamp circle,.admission-stamp>path{fill:none;stroke:currentColor;stroke-width:2.5}
+.admission-stamp circle:first-of-type{stroke-width:4;stroke-dasharray:17 1 3 1}
+.admission-stamp text{fill:currentColor;font-family:Arial,"Microsoft YaHei",sans-serif;font-weight:900;text-anchor:middle}
+.admission-stamp .stamp-arc{font-size:10px;letter-spacing:1px}
+.admission-stamp .stamp-main{font-size:23px}
+.admission-stamp .stamp-valid{font-size:14px;letter-spacing:4px}
+.admission-stamp .stamp-star{font-size:18px}
+.admission-status{font-size:11px;color:#65584f;line-height:1.5;text-align:center}
+.admission-ticket.is-stamped .admission-stamp{opacity:1}
+.admission-footer{padding:13px 12px;background:var(--ink);color:var(--yellow);font-size:14px;font-weight:900;line-height:1.7;text-align:center}
+@media(max-width:600px){.admission-section{padding-top:35px;padding-bottom:0}.admission-ticket{border-width:8px;box-shadow:5px 5px var(--ink)}.admission-inner{padding:16px}.admission-header{font-size:10px;padding-bottom:13px}.admission-body{grid-template-columns:minmax(0,1fr);gap:16px;padding-top:20px;padding-bottom:16px}.admission-copy .eyebrow{font-size:8px;letter-spacing:.6px}.admission-copy h2{margin-top:8px;font-size:clamp(24px,6.5vw,30px)}.admission-holder{margin-bottom:12px;font-size:clamp(15px,4vw,19px)}.admission-details{font-size:13px}.admission-stub{border-left:0;border-top:2px dashed var(--ink);padding:12px 0 0;grid-template-columns:minmax(0,1fr) 110px;gap:0 8px;align-items:center}.admission-stamp{grid-column:2;grid-row:1/3;width:110px;height:110px}.admission-status{grid-column:1;align-self:start;font-size:10px}.admission-footer{font-size:12px;padding-inline:8px}.admission-footer span{display:block}}
+@media(prefers-reduced-motion:reduce){.admission-stamp{opacity:1}}

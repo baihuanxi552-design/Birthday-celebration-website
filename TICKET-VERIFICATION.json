@@ -1,0 +1,198 @@
+{
+  "feature": "Birthday admission ticket",
+  "baselineCommit": "2d79b894fa332684f7bad1cae1df648d31453fb4",
+  "position": "Between home introduction/marquee and six exhibit halls",
+  "rendering": "HTML/CSS and inline SVG, no new media requests or runtime dependency",
+  "animation": {
+    "source": "Existing motion.js stampKeyframes from Claude Motion / LemoLab halftone-dossier",
+    "keyframes": 22,
+    "durationMs": 650,
+    "oncePerPage": true,
+    "trigger": "Stamp is 60% within viewport",
+    "reducedMotion": "Static stamp; QA matchMedia injection verified, not OS emulation"
+  },
+  "browser": {
+    "beforeVisibleStamped": false,
+    "afterVisibleStamped": true,
+    "finalOpacity": 1,
+    "status": "已盖章 · 永久有效",
+    "revisitDoesNotRestart": true,
+    "consoleErrors": [],
+    "viewports": [
+      {
+        "viewport": [
+          320,
+          568
+        ],
+        "overflow": [],
+        "scroll": 305,
+        "stampVisible": true,
+        "ticket": {
+          "bottom": 634.0000305175781,
+          "height": 494.4791870117187,
+          "left": 15.229166984558104,
+          "right": 289.4375104904175,
+          "top": 139.52084350585938,
+          "width": 274.2083435058594,
+          "x": 15.229166984558104,
+          "y": 139.52084350585938
+        },
+        "width": 305
+      },
+      {
+        "viewport": [
+          375,
+          667
+        ],
+        "overflow": [],
+        "scroll": 361,
+        "stampVisible": true,
+        "ticket": {
+          "bottom": 662.7708435058594,
+          "height": 495,
+          "left": 18,
+          "right": 342,
+          "top": 167.77084350585938,
+          "width": 324,
+          "x": 18,
+          "y": 167.77084350585938
+        },
+        "width": 360
+      },
+      {
+        "viewport": [
+          390,
+          844
+        ],
+        "overflow": [],
+        "scroll": 375,
+        "stampVisible": true,
+        "ticket": {
+          "bottom": 683.0521087646484,
+          "height": 497.2604370117187,
+          "left": 18.729167938232425,
+          "right": 355.9375114440918,
+          "top": 185.7916717529297,
+          "width": 337.2083435058594,
+          "x": 18.729167938232425,
+          "y": 185.7916717529297
+        },
+        "width": 375
+      },
+      {
+        "viewport": [
+          430,
+          932
+        ],
+        "overflow": [],
+        "scroll": 415,
+        "stampVisible": true,
+        "ticket": {
+          "bottom": 738.1145935058594,
+          "height": 503.3333435058594,
+          "left": 20.729167938232425,
+          "right": 393.9375114440918,
+          "top": 234.78125,
+          "width": 373.2083435058594,
+          "x": 20.729167938232425,
+          "y": 234.78125
+        },
+        "width": 415
+      },
+      {
+        "viewport": [
+          768,
+          1024
+        ],
+        "overflow": [],
+        "scroll": 753,
+        "stampVisible": true,
+        "ticket": {
+          "bottom": 250.15626525878903,
+          "height": 398.9479370117187,
+          "left": 37.625,
+          "right": 715.0416870117188,
+          "top": -148.7916717529297,
+          "width": 677.4166870117188,
+          "x": 37.625,
+          "y": -148.7916717529297
+        },
+        "width": 753
+      },
+      {
+        "viewport": [
+          1280,
+          720
+        ],
+        "overflow": [],
+        "scroll": 1265,
+        "stampVisible": true,
+        "ticket": {
+          "bottom": 330.4791717529297,
+          "height": 428.5520935058594,
+          "left": 82.33333587646484,
+          "right": 1182.3333358764648,
+          "top": -98.07292175292967,
+          "width": 1100,
+          "x": 82.33333587646484,
+          "y": -98.07292175292967
+        },
+        "width": 1265
+      },
+      {
+        "viewport": [
+          1920,
+          1080
+        ],
+        "overflow": [],
+        "scroll": 1905,
+        "stampVisible": true,
+        "ticket": {
+          "bottom": 330.4791717529297,
+          "height": 428.5520935058594,
+          "left": 402.3333435058594,
+          "right": 1502.3333435058594,
+          "top": -98.07292175292967,
+          "width": 1100,
+          "x": 402.3333435058594,
+          "y": -98.07292175292967
+        },
+        "width": 1905
+      },
+      {
+        "viewport": [
+          844,
+          390
+        ],
+        "overflow": [],
+        "scroll": 829,
+        "stampVisible": true,
+        "ticket": {
+          "bottom": 253.9479217529297,
+          "height": 402.7395935058594,
+          "left": 41.42708587646485,
+          "right": 787.2395858764648,
+          "top": -148.7916717529297,
+          "width": 745.8125,
+          "x": 41.42708587646485,
+          "y": -148.7916717529297
+        },
+        "width": 829
+      }
+    ]
+  },
+  "tests": {
+    "project": 27,
+    "repository": 6,
+    "failed": 0,
+    "originalMediaHashesUnchanged": 21
+  },
+  "performance": {
+    "method": "Same per-response 2 MiB/s, 64 KiB burst, 80ms delay local profile as V2 baseline, one sample",
+    "readyMs": 630.1999999955297,
+    "completedTransferBytes": 313048,
+    "completedRequests": 11,
+    "limitation": "Actual local sample, not Lighthouse or phone/network guarantee; completed entries exclude HTML and in-flight metadata"
+  },
+  "measuredAt": "2026-10-18T07:00:38.015Z"
+}

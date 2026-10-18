@@ -395,3 +395,12 @@ $('#blessing').addEventListener('close',()=>{$('.candles').classList.remove('blo
 $('#back-exhibits').addEventListener('click',()=>{const returnToExhibits=()=>{$('#exhibits').scrollIntoView({behavior:reduced.matches?'instant':'smooth'});$('#exhibits-title').tabIndex=-1;$('#exhibits-title').focus({preventScroll:true});};$('#blessing').addEventListener('close',returnToExhibits,{once:true});$('#blessing').close();});
 
 window.addEventListener('pagehide',()=>{clearQuotes();clearTimeout(glitchTimer);$('#glitch-photo').classList.remove('glitching');$('#police-overlay').hidden=true;});
+// Reuse the existing Claude Motion / LemoLab stamp overshoot, with no new media.
+const admission=$('.admission-ticket'),admissionStamp=$('#admission-stamp');
+const admissionObserver=new IntersectionObserver(entries=>{
+  if(!entries.some(entry=>entry.isIntersecting))return;
+  admissionObserver.disconnect();admission.classList.add('is-stamped');
+  $('#admission-status').textContent='已盖章 · 永久有效';
+  if(!reduced.matches)admissionStamp.animate(stampKeyframes(),{duration:650,easing:'linear',fill:'both'});
+},{threshold:.6});
+admissionObserver.observe(admissionStamp);

@@ -89,3 +89,8 @@ Claude-Motion部分实际改编LemoLab halftone-dossier 的网点密度场、盖
 所有原始媒体与 66 秒正片保持字节不变。`VERIFICATION.json` 与早期 `UPDATE-VERIFICATION.json` 是历史记录；本轮实际结果见 `V2-VERIFICATION.json` 和 `V2-REPORT.md`，不将桌面浏览器模拟视为实体手机验证。
 
 仓库校验无需安装依赖：Node.js 22+ 执行 `npm test`。运行 `npm start` 可本地预览。
+
+
+## 生日纪念入场券
+
+首页介绍与六间展厅之间新增常驻纸质票券：持票人「510 的好兄弟」、永久有效、NO.510。首次进入视口时，复用 `motion.js` 中已有 Claude Motion / LemoLab `stampKeyframes()`，用650ms缩放、轻微旋转和衰减回弹盖下「入馆认证」圆章。每次页面访问只自动盖一次，减少动画偏好下直接显示印章；不增加弹窗或强制等待，不新增媒体和第三方依赖。验证记录见 `TICKET-VERIFICATION.json`。
