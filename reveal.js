@@ -29,7 +29,8 @@ export function revealPlayback(video,{onPlaying=()=>{},onProgress=()=>{},onBlock
   };
   return {
     start(){if(active||finished)return;active=true;lastTime=video.currentTime;lastAdvance=now();timer=schedule(tick,200);play();},
-    resume(){if(!active)return;if(video.error)video.load();lastAdvance=now();lastNotice='';play();},
+    resume(){if(finished)return;if(!active){active=true;timer=schedule(tick,200);}if(video.error)video.load();lastAdvance=now();lastNotice='';play();},
+    reset(){stop();finished=false;lastNotice='';},
     check:tick,stop
   };
 }

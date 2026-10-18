@@ -1,8 +1,8 @@
 import {assetNames,clamp,comicState,lensGeometry} from './logic.js';
 import {halftonePath,stampKeyframes,glyphKeyframes} from './motion.js';
 import {SoundEffects} from './sound.js?v=20261018-8';
-import {giftLoading} from './loading.js?v=20261018-7';
-import {revealPlayback} from './reveal.js?v=20261018-6';
+import {giftLoading} from './loading.js?v=20261018-v2';
+import {revealPlayback} from './reveal.js?v=20261018-v2';
 
 const $=selector=>document.querySelector(selector);
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -24,7 +24,8 @@ document.querySelectorAll('[data-sound-toggle]').forEach(button=>button.addEvent
   if(intro.open&&(phase==='masked'||phase==='revealing'))(phase==='revealing'?revealVideo:introVideo).play().catch(()=>{$('#intro-status').textContent='请再点一次声音按钮开启视频声音。';});
 }));
 $('#power').addEventListener('pointerdown',()=>{if(!muted)sfx.unlock().catch(()=>{});});
-document.addEventListener('visibilitychange',()=>{if(document.hidden)sfx.stopAll();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){sfx.stopAll();$('#birthday-film').pause();introVideo.pause();revealVideo.pause();}});
+window.addEventListener('pagehide',()=>{sfx.stopAll();$('#birthday-film').pause();introVideo.pause();revealVideo.pause();playback.stop();if(phase==='revealing'){continueReveal.hidden=false;revealStatus.textContent='回来了！点继续播放，或直接入馆。';}});
 const labels={1:'很久以前，大师登场',2:'麦克风到手，世界我有',3:'系统未激活，抽象已激活',4:'禁止倒卖游戏币，510在旁边笑',5:'专业装备：黑手套',6:'魔方在手，笑容我有',7:'笑到画质崩坏',8:'宿舍上铺认真看书',9:'纯情二次元乖宝宝',10:'搭肩欢笑的兄弟们',12:'镇馆之宝：510的死亡睡颜',13:'思考人生',14:'当场断电',15:'保安和蓝伞之间的野生510',16:'火锅大仙吞云吐雾',17:'510和他的奖牌',18:'一回头，兄弟都在',19:'五兄弟西装合照，510在最右',20:'这一刻我们彼此相爱'};
 
 $('.halftone path').setAttribute('d',halftonePath());
@@ -53,15 +54,16 @@ const playback=revealPlayback(revealVideo,{
 });
 async function enterMuseum(){
   if(phase==='entering'||phase==='entered')return;
-  phase='entering';playback.stop();introVideo.pause();revealVideo.pause();hud.hidden=true;
+  phase='entering';$('#gift-open').disabled=true;$('#quick-enter').disabled=true;playback.stop();introVideo.pause();revealVideo.pause();hud.hidden=true;
   curtain.hidden=false;
   if(!reduced.matches){
     $('.entry-badge').animate(stampKeyframes(),{duration:520,fill:'both'});
     await curtain.animate([{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)'}],{duration:320,easing:'cubic-bezier(.34,1.56,.64,1)',fill:'both'}).finished.catch(()=>{});
   }
   // Move the covered curtain out of the modal before closing it, in the same paint.
-  document.body.append(curtain);intro.close();museum.inert=false;
-  document.body.classList.remove('gate-active');
+  document.body.append(curtain);if(intro.open)intro.close();museum.hidden=false;museum.inert=false;
+  $('#gift-loading').hidden=true;try{localStorage.setItem('510-visited','1');}catch{}
+  document.body.classList.remove('gate-active');window.scrollTo({top:0,behavior:'instant'});
   celebrate($('#celebration'));playSound('celebrate');
   if(!reduced.matches){
     $('.hero-copy').animate([{opacity:0,transform:'translateY(30px)'},{opacity:1,transform:'translateY(0)'}],{duration:600,easing:'cubic-bezier(.34,1.56,.64,1)'});
@@ -70,11 +72,20 @@ async function enterMuseum(){
   curtain.hidden=true;phase='entered';
   const title=$('#hero-title');title.tabIndex=-1;title.focus({preventScroll:true});
 }
-resolveMedia=giftLoading(()=>{
-  intro.showModal();
+const openIntro=()=>{
+  for(const video of [introVideo,revealVideo])if(!video.getAttribute('src')){video.src=video.dataset.preloadSrc;video.load();}
+  phase='masked';playback.reset();reveal.disabled=false;hud.hidden=true;continueReveal.hidden=true;
+  intro.classList.remove('revealing','reveal-playing','playback-blocked');$('#reveal-progress').value=0;
+  $('.live-tag').textContent='● 神秘寿星 / 身份待确认';
+  introVideo.currentTime=0;revealVideo.currentTime=0;document.body.classList.add('gate-active');intro.showModal();
   if(!reduced.matches)intro.animate([{opacity:0},{opacity:1}],{duration:300});
   introVideo.play().catch(()=>{$('#intro-status').textContent='点下按钮，即可开始播放并解锁510。';});
-},()=>playSound('unseal'));
+};
+resolveMedia=giftLoading(()=>{if(phase==='masked')openIntro();},()=>playSound('unseal'));
+try{$('#quick-enter').hidden=localStorage.getItem('510-visited')!=='1';}catch{}
+$('#quick-enter').addEventListener('click',()=>{playSound('tap');enterMuseum();});
+$('#skip-intro').addEventListener('click',enterMuseum);
+$('#replay-intro').addEventListener('click',()=>{film.pause();openIntro();});
 introVideo.addEventListener('error',()=>{
   if(phase!=='masked')return;
   $('#intro-retry').hidden=false;
@@ -96,8 +107,14 @@ continueReveal.addEventListener('click',()=>{
 $('#enter-museum').addEventListener('click',()=>enterMuseum());
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)playback.check();});
 
-const syncModalBody=()=>document.body.classList.toggle('modal-open',!!document.querySelector('dialog[open]:not(#intro)'));
-const openDialog=dialog=>{dialog.showModal();syncModalBody();};
+let modalScroll=0;
+const syncModalBody=()=>{
+  const open=!!document.querySelector('dialog[open]:not(#intro)');
+  if(open&&!document.body.classList.contains('modal-open')){modalScroll=window.scrollY;document.body.style.top=`-${modalScroll}px`;}
+  const wasOpen=document.body.classList.contains('modal-open');document.body.classList.toggle('modal-open',open);
+  if(!open&&wasOpen){document.body.style.top='';window.scrollTo({top:modalScroll,behavior:'instant'});}
+};
+const openDialog=dialog=>{if(dialog.open)return;dialog.showModal();syncModalBody();};
 document.querySelectorAll('dialog:not(#intro)').forEach(dialog=>{
   dialog.addEventListener('close',syncModalBody);
   dialog.addEventListener('click',event=>{
@@ -170,6 +187,7 @@ $('#power').addEventListener('input',()=>{
   document.querySelectorAll('[data-comic]').forEach((img,i)=>{
     img.style.opacity=state.opacity[i];img.style.transform=`rotate(${i===2?state.tilt:0}deg) scale(${i===2?1.12:1})`;
   });
+  $('#power').setAttribute('aria-valuetext',`精神电量 ${state.battery}%，${state.text}`);
   $('#power-value').textContent=`${value}% 断电进度`;$('#battery').textContent=`精神电量 ${state.battery}%`;
   $('#comic-state').textContent=state.text;
 });
@@ -187,34 +205,39 @@ const showLens=(x,y)=>{
 };
 peek.addEventListener('load',updateMarker);new ResizeObserver(updateMarker).observe(stage);updateMarker();
 let touchStart=null;
+const lensPoint=event=>{const r=stage.getBoundingClientRect();showLens(event.clientX-r.left-stage.clientLeft,event.clientY-r.top-stage.clientTop);};
 stage.addEventListener('pointerdown',event=>{
   if(locked||event.pointerType!=='touch')return;
-  const r=stage.getBoundingClientRect();touchStart={x:event.clientX,y:event.clientY};
-  showLens(event.clientX-r.left-stage.clientLeft,event.clientY-r.top-stage.clientTop);
+  touchStart={x:event.clientX,y:event.clientY,axis:null};
 });
 stage.addEventListener('pointermove',event=>{
   if(locked)return;
   if(event.pointerType==='touch'){
     if(!touchStart)return;
-    if(Math.abs(event.clientY-touchStart.y)>Math.abs(event.clientX-touchStart.x)+10){lens.hidden=true;return;}
+    const dx=Math.abs(event.clientX-touchStart.x),dy=Math.abs(event.clientY-touchStart.y);
+    if(!touchStart.axis&&Math.max(dx,dy)>10)touchStart.axis=dy>dx?'vertical':'horizontal';
+    if(touchStart.axis!=='horizontal'){if(touchStart.axis==='vertical')lens.hidden=true;return;}
   }
   const r=stage.getBoundingClientRect();let x=event.clientX-r.left-stage.clientLeft,y=event.clientY-r.top-stage.clientTop;
   const g=geometry(x,y);
   if(Math.hypot(x-g.targetX,y-g.targetY)<40){x=g.targetX;y=g.targetY;}
   showLens(x,y);
 });
-stage.addEventListener('pointerleave',()=>{if(!locked)lens.hidden=true;});
-for(const name of ['pointerup','pointercancel'])stage.addEventListener(name,()=>{touchStart=null;if(!locked)lens.hidden=true;});
+stage.addEventListener('pointerleave',event=>{if(!locked&&event.pointerType!=='touch')lens.hidden=true;});
+stage.addEventListener('pointerup',event=>{if(touchStart&&!locked&&touchStart.axis!=='vertical')lensPoint(event);touchStart=null;});
+stage.addEventListener('pointercancel',()=>{touchStart=null;if(!locked)lens.hidden=true;});
 $('#lock-target').addEventListener('click',()=>{
   locked=!locked;$('#lock-target').setAttribute('aria-pressed',String(locked));
   playSound(locked?'lock':'tap');
   $('#lock-target').innerHTML=locked?'已锁定！解除狙击 <span>⌖</span>':'锁定傻狍子 ×8 <span>⌖</span>';
   if(locked){const g=geometry();showLens(g.targetX,g.targetY);}else lens.hidden=true;
 });
+const shakes=new WeakMap();
 const shake=(target=museum)=>{
   if(reduced.matches)return;
   const mobile=window.matchMedia('(max-width:700px)').matches,amplitude=mobile?5:10;
-  (mobile?target:museum).animate(Array.from({length:17},(_,i)=>{const age=i/16,k=(1-age)**2;return {offset:age,transform:`translate(${Math.sin(i*2)*amplitude*k}px,${Math.cos(i*1.7)*amplitude*.7*k}px)`};}),{duration:mobile?480:650});
+  const surface=target;shakes.get(surface)?.cancel();
+  shakes.set(surface,surface.animate(Array.from({length:17},(_,i)=>{const age=i/16,k=(1-age)**2;return {offset:age,transform:`translate(${Math.sin(i*2)*amplitude*k}px,${Math.cos(i*1.7)*amplitude*.7*k}px)`};}),{duration:mobile?480:650}));
 };
 $('#police').addEventListener('click',()=>{
   const overlay=$('#police-overlay');overlay.hidden=true;
@@ -294,19 +317,22 @@ const quotes={
     '生日博物馆认证：有牌面的男人。'
   ]
 };
+const quoteTimers=new Map();
+const removeQuote=quote=>{clearTimeout(quoteTimers.get(quote));quoteTimers.delete(quote);quote.remove();};
+const clearQuotes=()=>{for(const quote of [...$('#quotes').children])removeQuote(quote);};
 const addQuote=()=>{
   playSound('quote');
   const box=$('#quotes'),lines=quotes[currentSpeech];
   for(let i=0;i<2;i++){
-    if(box.children.length>=3)box.firstElementChild.remove();
+    if(box.children.length>=2)removeQuote(box.firstElementChild);
     const quote=document.createElement('div');quote.className='quote';quote.textContent=lines[quoteIndex%lines.length];
-    quote.style.top=`${18+(quoteIndex%3)*27}%`;quote.style.animationDelay=`${i*.65}s`;quoteIndex++;box.append(quote);
-    quote.addEventListener('animationend',()=>quote.remove());
-    if(reduced.matches){quote.style.animation='none';setTimeout(()=>quote.remove(),6000);}
+    quote.style.top=`${8+(quoteIndex%2)*47}%`;quote.style.animationDelay=`${i*.65}s`;quoteIndex++;box.append(quote);
+    quote.addEventListener('animationend',()=>removeQuote(quote),{once:true});
+    quoteTimers.set(quote,setTimeout(()=>removeQuote(quote),reduced.matches?6000:8000));
   }
 };
 document.querySelectorAll('[data-speech]').forEach(button=>button.addEventListener('click',()=>{
-  currentSpeech=Number(button.dataset.speech);quoteIndex=0;$('#quotes').replaceChildren();
+  currentSpeech=Number(button.dataset.speech);quoteIndex=0;clearQuotes();
   const id=Number(button.dataset.speech);$('#speech-image').src=asset(id);$('#speech-image').srcset=resolveMedia(`assets/previews/${assetNames[id].replace(/\.(jpg|png)$/i,'.jpg')}`);$('#speech-image').alt=labels[id];$('#speech-original').dataset.view=id;
   $('#speech-index').textContent=`EXHIBIT ${String(id).padStart(2,'0')} / ${speechNames[id]}`;
   document.querySelectorAll('[data-speech]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));addQuote();
@@ -314,25 +340,38 @@ document.querySelectorAll('[data-speech]').forEach(button=>button.addEventListen
 $('#quote-button').addEventListener('click',addQuote);
 $('#watermark').addEventListener('click',()=>{openDialog($('#watermark-dialog'));playSound('proof');});
 
+const failedPhotos=new Set();
+const photoNotice=()=>{$('#media-notice').hidden=!failedPhotos.size;};
+document.addEventListener('error',event=>{const image=event.target;if(image.tagName!=='IMG')return;image.classList.add('photo-failed');failedPhotos.add(image);photoNotice();},true);
+document.addEventListener('load',event=>{const image=event.target;if(image.tagName!=='IMG')return;image.classList.remove('photo-failed');failedPhotos.delete(image);photoNotice();},true);
+document.querySelectorAll('[data-retry-photos]').forEach(button=>button.addEventListener('click',()=>{for(const image of failedPhotos){const src=image.getAttribute('src'),set=image.getAttribute('srcset');image.removeAttribute('src');image.removeAttribute('srcset');if(set)image.srcset=set;image.src=src;} }));
 const film=$('#birthday-film');
+let filmEndTimer;
+const finishFilm=()=>{clearInterval(filmEndTimer);if(!film.paused)film.pause();$('#play-film').innerHTML='再来一遍，快乐加倍 <span>↻</span>';$('#cinema-status').textContent='正片结束，往下还有兄弟们的生日祝福。';};
+const checkFilmEnd=()=>{if(!film.seeking&&Number.isFinite(film.duration)&&film.duration>0&&film.currentTime>=film.duration-.03)finishFilm();};
+const filmObserver=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){film.poster=film.dataset.poster;filmObserver.disconnect();}},{rootMargin:'500px'});filmObserver.observe(film);
 $('#play-film').addEventListener('click',()=>{
   if(!film.paused){film.pause();return;}
-  if(film.error)film.load();
-  film.play().catch(()=>{$('#cinema-status').textContent='请点击播放器内的播放按钮，或检查视频文件是否已完整加载。';});
+  if(!film.getAttribute('src')){film.src=film.dataset.preloadSrc;film.load();}else if(film.error)film.load();
+  $('#cinema-status').textContent='正在准备放映，可使用播放器控制播放进度。';
+  film.play().catch(error=>{if(error.name!=='AbortError')$('#cinema-status').textContent='播放暂未成功，点播放按钮重试，或使用播放器内的播放键。';});
 });
-film.addEventListener('play',()=>{sfx.stopAll();$('#play-film').innerHTML='暂停一下，让寿星缓缓 <span>Ⅱ</span>';$('#cinema-status').textContent='正在放映：510的66秒抽象人生。';});
-film.addEventListener('pause',()=>{$('#play-film').innerHTML='继续观看生日大片 <span>▶</span>';});
-film.addEventListener('ended',()=>{$('#play-film').innerHTML='再来一遍，快乐加倍 <span>↻</span>';$('#cinema-status').textContent='正片结束，往下还有兄弟们的生日祝福。';});
-film.addEventListener('error',()=>{$('#cinema-status').textContent='正片未加载成功，点播放按钮重新加载。';});
+film.addEventListener('waiting',()=>{$('#cinema-status').textContent='影片缓冲中，准备好了会继续播放。';});
+film.addEventListener('playing',()=>{$('#cinema-status').textContent='正在放映：510的66秒抽象人生。';});
+film.addEventListener('play',()=>{if(film.currentTime>=film.duration-.03)film.currentTime=0;clearInterval(filmEndTimer);filmEndTimer=setInterval(checkFilmEnd,400);sfx.stopAll();$('#play-film').innerHTML='暂停一下，让寿星缓缓 <span>Ⅱ</span>';$('#cinema-status').textContent='正在放映：510的66秒抽象人生。';});
+film.addEventListener('pause',()=>{clearInterval(filmEndTimer);$('#play-film').innerHTML='继续观看生日大片 <span>▶</span>';});
+film.addEventListener('ended',finishFilm);
+film.addEventListener('timeupdate',checkFilmEnd);
+film.addEventListener('error',()=>{clearInterval(filmEndTimer);$('#cinema-status').textContent='正片未加载成功，点播放按钮重新加载。';});
 
 function celebrate(layer){
   layer.replaceChildren();if(reduced.matches)return;
-  const count=window.matchMedia('(max-width:700px), (pointer:coarse)').matches?40:92;
+  const count=layer.id==='final-confetti'?26:window.matchMedia('(max-width:700px), (pointer:coarse)').matches?40:92;
   for(let i=0;i<count;i++){
     const p=document.createElement('i');p.className=`confetti${i%9===0?' head':''}`;
     const colors=['#ffe24b','#ff5b45','#365dff','#beedbe','#ffb9d7'];
     p.style.cssText=`left:${(i*37)%101}%;--duration:${3.4+(i%7)*.2}s;--delay:${(i%11)*.065}s;--drift:${Math.sin(i*2.39)*180}px;--rotation:${(i%2?1:-1)*(250+i*11)}deg;background-color:${colors[i%5]};`;
-    if(i%9===0)p.style.backgroundImage=`url("${asset(12)}")`;
+    if(i%9===0)p.style.backgroundImage='url("assets/previews/12_sleep_face.jpg")';
     p.addEventListener('animationend',()=>p.remove());layer.append(p);
   }
 }
@@ -349,3 +388,7 @@ $('#blow-candles').addEventListener('click',()=>{
   }
 });
 $('#blessing').addEventListener('close',()=>{$('.candles').classList.remove('blown');$('#final-confetti').replaceChildren();});
+
+$('#back-exhibits').addEventListener('click',()=>{const returnToExhibits=()=>{$('#exhibits').scrollIntoView({behavior:reduced.matches?'instant':'smooth'});$('#exhibits-title').tabIndex=-1;$('#exhibits-title').focus({preventScroll:true});};$('#blessing').addEventListener('close',returnToExhibits,{once:true});$('#blessing').close();});
+
+window.addEventListener('pagehide',()=>{clearQuotes();clearTimeout(glitchTimer);$('#glitch-photo').classList.remove('glitching');$('#police-overlay').hidden=true;});
